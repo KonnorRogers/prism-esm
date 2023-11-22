@@ -1,4 +1,4 @@
-(function (Prism) {
+export function loader (Prism) {
 	Prism.languages.scheme = {
 		// this supports "normal" single-line comments:
 		//   ; comment
@@ -102,11 +102,11 @@
 	};
 
 	/**
-	 * Given a topologically sorted BNF grammar, this will return the RegExp source of last rule of the grammar.
-	 *
-	 * @param {Record<string, string>} grammar
-	 * @returns {string}
-	 */
+	* Given a topologically sorted BNF grammar, this will return the RegExp source of last rule of the grammar.
+	*
+	* @param {Record<string, string>} grammar
+	* @returns {string}
+	*/
 	function SortedBNF(grammar) {
 		for (var key in grammar) {
 			grammar[key] = grammar[key].replace(/<[\w\s]+>/g, function (key) {
@@ -116,5 +116,4 @@
 		// return the last item
 		return grammar[key];
 	}
-
-}(Prism));
+}

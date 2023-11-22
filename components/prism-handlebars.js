@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	Prism.languages.handlebars = {
 		'comment': /\{\{![\s\S]*?\}\}/,
 		'delimiter': {
@@ -36,5 +35,4 @@
 
 	Prism.languages.hbs = Prism.languages.handlebars;
 	Prism.languages.mustache = Prism.languages.handlebars;
-
-}(Prism));
+}

@@ -1,10 +1,9 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	var key = /(?:[\w-]+|'[^'\n\r]*'|"(?:\\.|[^\\"\r\n])*")/.source;
 
 	/**
-	 * @param {string} pattern
-	 */
+	* @param {string} pattern
+	*/
 	function insertKey(pattern) {
 		return pattern.replace(/__/g, function () { return key; });
 	}
@@ -46,4 +45,4 @@
 		'boolean': /\b(?:false|true)\b/,
 		'punctuation': /[.,=[\]{}]/
 	};
-}(Prism));
+}

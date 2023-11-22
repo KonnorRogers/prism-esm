@@ -1,4 +1,4 @@
-(function (Prism) {
+export function loader (Prism) {
 	var variable = /%%?[~:\w]+%?|!\S+!/;
 	var parameter = {
 		pattern: /\/[a-z?]+(?=[ :]|$):?|-[a-z]\b|--[a-z-]+\b/im,
@@ -96,4 +96,4 @@
 		'operator': /[&@]/,
 		'punctuation': /[()']/
 	};
-}(Prism));
+}

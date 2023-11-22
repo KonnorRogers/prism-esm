@@ -1,5 +1,9 @@
-(function (Prism) {
+import { loader as markupLoader } from './prism-markup.js'
+import { loader as javascriptLoader } from './prism-javascript.js'
 
+export function loader (Prism) {
+	markupLoader(Prism)
+	javascriptLoader(Prism)
 	var javascript = Prism.util.clone(Prism.languages.javascript);
 
 	var space = /(?:\s|\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))\*\/)/.source;
@@ -7,9 +11,9 @@
 	var spread = /(?:\{<S>*\.{3}(?:[^{}]|<BRACES>)*\})/.source;
 
 	/**
-	 * @param {string} source
-	 * @param {string} [flags]
-	 */
+	* @param {string} source
+	* @param {string} [flags]
+	*/
 	function re(source, flags) {
 		source = source
 			.replace(/<S>/g, function () { return space; })
@@ -141,5 +145,4 @@
 		}
 		walkTokens(env.tokens);
 	});
-
-}(Prism));
+}

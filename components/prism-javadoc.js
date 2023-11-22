@@ -1,5 +1,6 @@
-(function (Prism) {
-
+import { loader as javadoclikeLoader } from "./prism-javadoclike.js"
+export function loader (Prism) {
+	javadoclikeLoader(Prism)
 	var codeLinePattern = /(^(?:[\t ]*(?:\*\s*)*))[^*\s].*$/m;
 
 	var memberReference = /#\s*\w+(?:\s*\([^()]*\))?/.source;
@@ -79,4 +80,4 @@
 	});
 
 	Prism.languages.javadoclike.addSupport('java', Prism.languages.javadoc);
-}(Prism));
+}

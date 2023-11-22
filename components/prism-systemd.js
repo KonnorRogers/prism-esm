@@ -1,7 +1,5 @@
-// https://www.freedesktop.org/software/systemd/man/systemd.syntax.html
-
-(function (Prism) {
-
+export function loader (Prism) {
+	// https://www.freedesktop.org/software/systemd/man/systemd.syntax.html
 	var comment = {
 		pattern: /^[;#].*/m,
 		greedy: true
@@ -70,5 +68,4 @@
 
 		'punctuation': /=/
 	};
-
-}(Prism));
+}

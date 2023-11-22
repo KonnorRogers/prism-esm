@@ -1,4 +1,6 @@
-(function (Prism) {
+import { loader as javascriptLoader } from "./prism-javascript.js"
+export function loader (Prism) {
+	javascriptLoader(Prism)
 
 	var operators = [
 		// query and projection
@@ -93,5 +95,4 @@
 			alias: 'keyword'
 		}
 	});
-
-}(Prism));
+}

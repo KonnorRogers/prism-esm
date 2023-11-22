@@ -1,4 +1,4 @@
-(function (Prism) {
+export function loader (Prism) {
 	var variable = /\$\w+|%[a-z]+%/;
 
 	var arrowAttr = /\[[^[\]]*\]/.source;
@@ -99,5 +99,4 @@
 	Prism.languages['plant-uml'].arrow.inside.expression.inside = Prism.languages['plant-uml'];
 
 	Prism.languages['plantuml'] = Prism.languages['plant-uml'];
-
-}(Prism));
+}

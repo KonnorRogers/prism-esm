@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	// https://cuelang.org/docs/references/spec/
 
 	// eslint-disable-next-line regexp/strict
@@ -80,5 +79,4 @@
 	};
 
 	Prism.languages.cue['string-literal'].inside.interpolation.inside.expression.inside = Prism.languages.cue;
-
-}(Prism));
+}

@@ -1,4 +1,4 @@
-(function (Prism) {
+export function loader (Prism) {
 	/**
 	 * @param {string} lang
 	 * @param {string} pattern
@@ -102,4 +102,4 @@
 	};
 
 	Prism.languages.art = Prism.languages['arturo'];
-}(Prism));
+};

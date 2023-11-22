@@ -1,4 +1,6 @@
-(function (Prism) {
+import { loader as markupLoader } from "./prism-markup.js"
+export function loader (Prism) {
+	markupLoader(Prism)
 	Prism.languages.latte = {
 		'comment': /^\{\*[\s\S]*/,
 		'latte-tag': {
@@ -59,5 +61,4 @@
 	Prism.hooks.add('after-tokenize', function (env) {
 		Prism.languages['markup-templating'].tokenizePlaceholders(env, 'latte');
 	});
-
-}(Prism));
+}

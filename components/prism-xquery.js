@@ -1,5 +1,6 @@
-(function (Prism) {
-
+import { loader as markupLoader } from "./prism-markup.js"
+export function loader (Prism) {
+	markupLoader(Prism)
 	Prism.languages.xquery = Prism.languages.extend('markup', {
 		'xquery-comment': {
 			pattern: /\(:[\s\S]*?:\)/,
@@ -158,5 +159,4 @@
 		}
 		walkTokens(env.tokens);
 	});
-
-}(Prism));
+}

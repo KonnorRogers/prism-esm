@@ -1,5 +1,6 @@
-(function (Prism) {
-
+import { loader as javadoclikeLoader } from "./prism-javadoclike.js"
+export function loader (Prism) {
+	javadoclikeLoader(Prism)
 	var javascript = Prism.languages.javascript;
 
 	var type = /\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})+\}/.source;
@@ -74,5 +75,4 @@
 	});
 
 	Prism.languages.javadoclike.addSupport('javascript', Prism.languages.jsdoc);
-
-}(Prism));
+}

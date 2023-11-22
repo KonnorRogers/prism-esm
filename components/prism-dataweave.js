@@ -1,4 +1,4 @@
-(function (Prism) {
+export function loader (Prism) {
 	Prism.languages.dataweave = {
 		'url': /\b[A-Za-z]+:\/\/[\w/:.?=&-]+|\burn:[\w:.?=&-]+/,
 		'property': {
@@ -37,5 +37,4 @@
 		'operator': /<<|>>|->|[<>~=]=?|!=|--?-?|\+\+?|!|\?/,
 		'boolean': /\b(?:false|true)\b/,
 	};
-
-}(Prism));
+}

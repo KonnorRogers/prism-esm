@@ -1,4 +1,6 @@
-(function (Prism) {
+import { loader as clikeLoader } from "./prism-clike.js"
+export function loader (Prism) {
+	clikeLoader(Prism)
 	var keywords = [
 		/\b(?:async|sync|yield)\*/,
 		/\b(?:abstract|assert|async|await|break|case|catch|class|const|continue|covariant|default|deferred|do|dynamic|else|enum|export|extends|extension|external|factory|final|finally|for|get|hide|if|implements|import|in|interface|library|mixin|new|null|on|operator|part|rethrow|return|set|show|static|super|switch|sync|this|throw|try|typedef|var|void|while|with|yield)\b/
@@ -76,4 +78,4 @@
 			}
 		},
 	});
-}(Prism));
+}

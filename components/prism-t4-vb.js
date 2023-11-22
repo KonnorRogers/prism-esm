@@ -1,1 +1,3 @@
-Prism.languages['t4-vb'] = Prism.languages['t4-templating'].createT4('vbnet');
+export function loader (Prism) {
+	Prism.languages['t4-vb'] = Prism.languages['t4-templating'].createT4('vbnet');
+}

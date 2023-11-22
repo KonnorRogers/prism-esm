@@ -1,6 +1,8 @@
-// https://tools.ietf.org/html/rfc4180
+export function loader (Prism) {
+	// https://tools.ietf.org/html/rfc4180
 
-Prism.languages.csv = {
-	'value': /[^\r\n,"]+|"(?:[^"]|"")*"(?!")/,
-	'punctuation': /,/
-};
+	Prism.languages.csv = {
+		'value': /[^\r\n,"]+|"(?:[^"]|"")*"(?!")/,
+		'punctuation': /,/
+	};
+}

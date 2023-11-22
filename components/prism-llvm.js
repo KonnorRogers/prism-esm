@@ -1,4 +1,4 @@
-(function (Prism) {
+export function loader (Prism) {
 	Prism.languages.llvm = {
 		'comment': /;.*/,
 		'string': {
@@ -16,4 +16,4 @@
 		'number': /[+-]?\b\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b|\b0x[\dA-Fa-f]+\b|\b0xK[\dA-Fa-f]{20}\b|\b0x[ML][\dA-Fa-f]{32}\b|\b0xH[\dA-Fa-f]{4}\b/,
 		'punctuation': /[{}[\];(),.!*=<>]/,
 	};
-}(Prism));
+}

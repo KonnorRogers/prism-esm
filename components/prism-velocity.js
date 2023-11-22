@@ -1,4 +1,6 @@
-(function (Prism) {
+import { loader as markupLoader } from "./prism-markup.js"
+export function loader (Prism) {
+	markupLoader(Prism)
 	Prism.languages.velocity = Prism.languages.extend('markup', {});
 
 	var velocity = {
@@ -68,5 +70,4 @@
 	});
 
 	Prism.languages.velocity['tag'].inside['attr-value'].inside.rest = Prism.languages.velocity;
-
-}(Prism));
+}

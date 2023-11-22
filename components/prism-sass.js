@@ -1,4 +1,6 @@
-(function (Prism) {
+import { loader as cssLoader } from "./prism-css.js"
+export function loader (Prism) {
+	cssLoader(Prism)
 	Prism.languages.sass = Prism.languages.extend('css', {
 		// Sass comments don't need to be closed, only indented
 		'comment': {
@@ -73,5 +75,4 @@
 			greedy: true
 		}
 	});
-
-}(Prism));
+}

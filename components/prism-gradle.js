@@ -1,4 +1,6 @@
-(function (Prism) {
+import { loader as clikeLoader } from "./prism-clike.js"
+export function loader (Prism) {
+	clikeLoader(Prism)
 	var interpolation = {
 		pattern: /((?:^|[^\\$])(?:\\{2})*)\$(?:\w+|\{[^{}]*\})/,
 		lookbehind: true,
@@ -60,4 +62,4 @@
 	});
 
 	interpolation.inside.expression.inside = Prism.languages.gradle;
-}(Prism));
+}

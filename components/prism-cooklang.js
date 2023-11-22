@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	// see https://github.com/cooklang/spec/blob/main/EBNF.md
 
 	var single_token_suffix = /(?:(?!\s)[\d$+<=a-zA-Z\x80-\uFFFF])+/.source;
@@ -143,4 +142,4 @@
 			}
 		}
 	};
-}(Prism));
+}

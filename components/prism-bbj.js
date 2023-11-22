@@ -1,4 +1,4 @@
-(function (Prism) {
+export function loader (Prism) {
 	Prism.languages.bbj = {
 		'comment': {
 			pattern: /(^|[^\\:])rem\s+.*/i,
@@ -16,4 +16,4 @@
 		'operator': /<[=>]?|>=?|[+\-*\/^=&]|\b(?:and|not|or|xor)\b/i,
 		'punctuation': /[.,;:()]/
 	};
-}(Prism));
+}

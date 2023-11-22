@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	var jsString = /"(?:\\.|[^\\"\r\n])*"|'(?:\\.|[^\\'\r\n])*'/.source;
 	var jsComment = /\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))*\*\//.source;
 
@@ -57,5 +56,4 @@
 		'keyword': /\b(?:as|import|on)\b/,
 		'punctuation': /[{}[\]:;,]/
 	};
-
-}(Prism));
+}

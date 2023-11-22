@@ -1,20 +1,20 @@
-(function (Prism) {
+export function loader (Prism) {
 	/**
-	 * Functions to construct regular expressions
-	 * e.g. (interactive ... or (interactive)
-	 *
-	 * @param {string} name
-	 * @returns {RegExp}
-	 */
+	* Functions to construct regular expressions
+	* e.g. (interactive ... or (interactive)
+	*
+	* @param {string} name
+	* @returns {RegExp}
+	*/
 	function simple_form(name) {
 		return RegExp(/(\()/.source + '(?:' + name + ')' + /(?=[\s\)])/.source);
 	}
 	/**
-	 * booleans and numbers
-	 *
-	 * @param {string} pattern
-	 * @returns {RegExp}
-	 */
+	* booleans and numbers
+	*
+	* @param {string} pattern
+	* @returns {RegExp}
+	*/
 	function primitive(pattern) {
 		return RegExp(/([\s([])/.source + '(?:' + pattern + ')' + /(?=[\s)])/.source);
 	}
@@ -194,4 +194,4 @@
 	Prism.languages.elisp = language;
 	Prism.languages.emacs = language;
 	Prism.languages['emacs-lisp'] = language;
-}(Prism));
+}

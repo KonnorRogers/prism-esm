@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	var comment = {
 		pattern: /(^[ \t]*| {2}|\t)#.*/m,
 		lookbehind: true,
@@ -100,5 +99,4 @@
 	};
 
 	Prism.languages.robot = Prism.languages['robotframework'];
-
-}(Prism));
+}

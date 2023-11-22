@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	var expressionDef = /\{[^\r\n\[\]{}]*\}/;
 
 	var params = {
@@ -115,9 +114,9 @@
 	/** @typedef {InstanceType<import("./prism-core")["Token"]>} Token */
 
 	/**
-	 * This hook is used to validate generic-text tokens for balanced brackets.
-	 * Mark token as bad-line when contains not balanced brackets: {},[]
-	 */
+	* This hook is used to validate generic-text tokens for balanced brackets.
+	* Mark token as bad-line when contains not balanced brackets: {},[]
+	*/
 	Prism.hooks.add('after-tokenize', function (env) {
 		/** @type {(Token | string)[]} */
 		var tokens = env.tokens;
@@ -133,9 +132,9 @@
 	});
 
 	/**
-	 * @param {string} input
-	 * @returns {boolean}
-	 */
+	* @param {string} input
+	* @returns {boolean}
+	*/
 	function isBracketsBalanced(input) {
 		var brackets = '[]{}';
 		var stack = [];
@@ -154,9 +153,9 @@
 	}
 
 	/**
-	 * @param {string | Token | (string | Token)[]} token
-	 * @returns {string}
-	 */
+	* @param {string | Token | (string | Token)[]} token
+	* @returns {string}
+	*/
 	function getTextContent(token) {
 		if (typeof token === 'string') {
 			return token;
@@ -166,5 +165,4 @@
 			return getTextContent(token.content);
 		}
 	}
-
-}(Prism));
+}

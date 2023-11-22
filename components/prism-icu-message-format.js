@@ -1,13 +1,11 @@
-// https://unicode-org.github.io/icu/userguide/format_parse/messages/
-// https://unicode-org.github.io/icu-docs/apidoc/released/icu4j/com/ibm/icu/text/MessageFormat.html
-
-(function (Prism) {
-
+export function loader (Prism) {
+	// https://unicode-org.github.io/icu/userguide/format_parse/messages/
+	// https://unicode-org.github.io/icu-docs/apidoc/released/icu4j/com/ibm/icu/text/MessageFormat.html
 	/**
-	 * @param {string} source
-	 * @param {number} level
-	 * @returns {string}
-	 */
+	* @param {string} source
+	* @param {number} level
+	* @returns {string}
+	*/
 	function nested(source, level) {
 		if (level <= 0) {
 			return /[]/.source;
@@ -145,4 +143,4 @@
 	nestedMessage.inside.message.inside = Prism.languages['icu-message-format'];
 	Prism.languages['icu-message-format'].argument.inside.content.inside['choice-style'].inside.rest = Prism.languages['icu-message-format'];
 
-}(Prism));
+}

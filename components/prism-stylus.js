@@ -1,4 +1,4 @@
-(function (Prism) {
+export function loader (Prism) {
 	var unit = {
 		pattern: /(\b\d+)(?:%|[a-z]+)/,
 		lookbehind: true
@@ -140,4 +140,4 @@
 		'interpolation': inside.interpolation,
 		'punctuation': /[{}()\[\];:.]/
 	};
-}(Prism));
+}

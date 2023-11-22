@@ -1,4 +1,9 @@
-(function (Prism) {
+import { loader as jsxLoader } from "./prism-jsx.js"
+import { loader as typescriptLoader } from "./prism-typescript.js"
+
+export function loader (Prism) {
+	jsxLoader(Prism)
+	typescriptLoader(Prism)
 	var typescript = Prism.util.clone(Prism.languages.typescript);
 	Prism.languages.tsx = Prism.languages.extend('jsx', typescript);
 
@@ -12,4 +17,4 @@
 	var tag = Prism.languages.tsx.tag;
 	tag.pattern = RegExp(/(^|[^\w$]|(?=<\/))/.source + '(?:' + tag.pattern.source + ')', tag.pattern.flags);
 	tag.lookbehind = true;
-}(Prism));
+}

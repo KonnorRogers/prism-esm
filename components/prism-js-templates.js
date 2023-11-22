@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	var templateString = Prism.languages.javascript['template-string'];
 
 	// see the pattern in prism-javascript.js
@@ -10,16 +9,16 @@
 
 
 	/**
-	 * Creates a new pattern to match a template string with a special tag.
-	 *
-	 * This will return `undefined` if there is no grammar with the given language id.
-	 *
-	 * @param {string} language The language id of the embedded language. E.g. `markdown`.
-	 * @param {string} tag The regex pattern to match the tag.
-	 * @returns {object | undefined}
-	 * @example
-	 * createTemplate('css', /\bcss/.source);
-	 */
+	* Creates a new pattern to match a template string with a special tag.
+	*
+	* This will return `undefined` if there is no grammar with the given language id.
+	*
+	* @param {string} language The language id of the embedded language. E.g. `markdown`.
+	* @param {string} tag The regex pattern to match the tag.
+	* @returns {object | undefined}
+	* @example
+	* createTemplate('css', /\bcss/.source);
+	*/
 	function createTemplate(language, tag) {
 		if (!Prism.languages[language]) {
 			return undefined;
@@ -72,24 +71,24 @@
 
 
 	/**
-	 * Returns a specific placeholder literal for the given language.
-	 *
-	 * @param {number} counter
-	 * @param {string} language
-	 * @returns {string}
-	 */
+	* Returns a specific placeholder literal for the given language.
+	*
+	* @param {number} counter
+	* @param {string} language
+	* @returns {string}
+	*/
 	function getPlaceholder(counter, language) {
 		return '___' + language.toUpperCase() + '_' + counter + '___';
 	}
 
 	/**
-	 * Returns the tokens of `Prism.tokenize` but also runs the `before-tokenize` and `after-tokenize` hooks.
-	 *
-	 * @param {string} code
-	 * @param {any} grammar
-	 * @param {string} language
-	 * @returns {(string|Token)[]}
-	 */
+	* Returns the tokens of `Prism.tokenize` but also runs the `before-tokenize` and `after-tokenize` hooks.
+	*
+	* @param {string} code
+	* @param {any} grammar
+	* @param {string} language
+	* @returns {(string|Token)[]}
+	*/
 	function tokenizeWithHooks(code, grammar, language) {
 		var env = {
 			code: code,
@@ -103,11 +102,11 @@
 	}
 
 	/**
-	 * Returns the token of the given JavaScript interpolation expression.
-	 *
-	 * @param {string} expression The code of the expression. E.g. `"${42}"`
-	 * @returns {Token}
-	 */
+	* Returns the token of the given JavaScript interpolation expression.
+	*
+	* @param {string} expression The code of the expression. E.g. `"${42}"`
+	* @returns {Token}
+	*/
 	function tokenizeInterpolationExpression(expression) {
 		var tempGrammar = {};
 		tempGrammar['interpolation-punctuation'] = interpolationPunctuationObject;
@@ -116,13 +115,13 @@
 		var tokens = Prism.tokenize(expression, tempGrammar);
 		if (tokens.length === 3) {
 			/**
-			 * The token array will look like this
-			 * [
-			 *     ["interpolation-punctuation", "${"]
-			 *     "..." // JavaScript expression of the interpolation
-			 *     ["interpolation-punctuation", "}"]
-			 * ]
-			 */
+			* The token array will look like this
+			* [
+			*     ["interpolation-punctuation", "${"]
+			*     "..." // JavaScript expression of the interpolation
+			*     ["interpolation-punctuation", "}"]
+			* ]
+			*/
 
 			var args = [1, 1];
 			args.push.apply(args, tokenizeWithHooks(tokens[1], Prism.languages.javascript, 'javascript'));
@@ -134,22 +133,22 @@
 	}
 
 	/**
-	 * Tokenizes the given code with support for JavaScript interpolation expressions mixed in.
-	 *
-	 * This function has 3 phases:
-	 *
-	 * 1. Replace all JavaScript interpolation expression with a placeholder.
-	 *    The placeholder will have the syntax of a identify of the target language.
-	 * 2. Tokenize the code with placeholders.
-	 * 3. Tokenize the interpolation expressions and re-insert them into the tokenize code.
-	 *    The insertion only works if a placeholder hasn't been "ripped apart" meaning that the placeholder has been
-	 *    tokenized as two tokens by the grammar of the embedded language.
-	 *
-	 * @param {string} code
-	 * @param {object} grammar
-	 * @param {string} language
-	 * @returns {Token}
-	 */
+	* Tokenizes the given code with support for JavaScript interpolation expressions mixed in.
+	*
+	* This function has 3 phases:
+	*
+	* 1. Replace all JavaScript interpolation expression with a placeholder.
+	*    The placeholder will have the syntax of a identify of the target language.
+	* 2. Tokenize the code with placeholders.
+	* 3. Tokenize the interpolation expressions and re-insert them into the tokenize code.
+	*    The insertion only works if a placeholder hasn't been "ripped apart" meaning that the placeholder has been
+	*    tokenized as two tokens by the grammar of the embedded language.
+	*
+	* @param {string} code
+	* @param {object} grammar
+	* @param {string} language
+	* @returns {Token}
+	*/
 	function tokenizeEmbedded(code, grammar, language) {
 		// 1. First filter out all interpolations
 
@@ -191,10 +190,10 @@
 		placeholderCounter = 0;
 
 		/**
-		 *
-		 * @param {(Token|string)[]} tokens
-		 * @returns {void}
-		 */
+		*
+		* @param {(Token|string)[]} tokens
+		* @returns {void}
+		*/
 		function walkTokens(tokens) {
 			for (var i = 0; i < tokens.length; i++) {
 				if (placeholderCounter >= placeholders.length) {
@@ -249,10 +248,10 @@
 	}
 
 	/**
-	 * The languages for which JS templating will handle tagged template literals.
-	 *
-	 * JS templating isn't active for only JavaScript but also related languages like TypeScript, JSX, and TSX.
-	 */
+	* The languages for which JS templating will handle tagged template literals.
+	*
+	* JS templating isn't active for only JavaScript but also related languages like TypeScript, JSX, and TSX.
+	*/
 	var supportedLanguages = {
 		'javascript': true,
 		'js': true,
@@ -267,11 +266,11 @@
 		}
 
 		/**
-		 * Finds and tokenizes all template strings with an embedded languages.
-		 *
-		 * @param {(Token | string)[]} tokens
-		 * @returns {void}
-		 */
+		* Finds and tokenizes all template strings with an embedded languages.
+		*
+		* @param {(Token | string)[]} tokens
+		* @returns {void}
+		*/
 		function findTemplateStrings(tokens) {
 			for (var i = 0, l = tokens.length; i < l; i++) {
 				var token = tokens[i];
@@ -290,19 +289,19 @@
 
 				if (token.type === 'template-string') {
 					/**
-					 * A JavaScript template-string token will look like this:
-					 *
-					 * ["template-string", [
-					 *     ["template-punctuation", "`"],
-					 *     (
-					 *         An array of "string" and "interpolation" tokens. This is the simple string case.
-					 *         or
-					 *         ["embedded-code", "..."] This is the token containing the embedded code.
-					 *                                  It also has an alias which is the language of the embedded code.
-					 *     ),
-					 *     ["template-punctuation", "`"]
-					 * ]]
-					 */
+					* A JavaScript template-string token will look like this:
+					*
+					* ["template-string", [
+					*     ["template-punctuation", "`"],
+					*     (
+					*         An array of "string" and "interpolation" tokens. This is the simple string case.
+					*         or
+					*         ["embedded-code", "..."] This is the token containing the embedded code.
+					*                                  It also has an alias which is the language of the embedded code.
+					*     ),
+					*     ["template-punctuation", "`"]
+					* ]]
+					*/
 
 					var embedded = content[1];
 					if (content.length === 3 && typeof embedded !== 'string' && embedded.type === 'embedded-code') {
@@ -331,11 +330,11 @@
 
 
 	/**
-	 * Returns the string content of a token or token stream.
-	 *
-	 * @param {string | Token | (string | Token)[]} value
-	 * @returns {string}
-	 */
+	* Returns the string content of a token or token stream.
+	*
+	* @param {string | Token | (string | Token)[]} value
+	* @returns {string}
+	*/
 	function stringContent(value) {
 		if (typeof value === 'string') {
 			return value;
@@ -345,5 +344,4 @@
 			return stringContent(value.content);
 		}
 	}
-
-}(Prism));
+}

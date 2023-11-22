@@ -1,4 +1,6 @@
-(function (Prism) {
+import { loader as clikeLoader } from "./prism-clike.js"
+export function loader (Prism) {
+	clikeLoader(Prism)
 	var interpolationExpr = {
 		pattern: /[\s\S]+/,
 		inside: null
@@ -78,4 +80,4 @@
 			}
 		}
 	});
-}(Prism));
+}

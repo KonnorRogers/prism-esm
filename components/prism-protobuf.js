@@ -1,5 +1,6 @@
-(function (Prism) {
-
+import { loader as clikeLoader } from "./prism-clike.js"
+export function loader (Prism) {
+	clikeLoader(Prism)
 	var builtinTypes = /\b(?:bool|bytes|double|s?fixed(?:32|64)|float|[su]?int(?:32|64)|string)\b/;
 
 	Prism.languages.protobuf = Prism.languages.extend('clike', {
@@ -39,5 +40,4 @@
 			lookbehind: true
 		}
 	});
-
-}(Prism));
+}

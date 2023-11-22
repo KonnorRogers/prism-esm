@@ -1,4 +1,4 @@
-(function (Prism) {
+export function loader (Prism) {
 	// TODO:
 	// - Add CSS highlighting inside <style> tags
 	// - Add support for multi-line code blocks
@@ -184,5 +184,4 @@
 	}
 
 	Prism.languages.insertBefore('pug', 'filter', all_filters);
-
-}(Prism));
+}

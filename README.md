@@ -1,3 +1,35 @@
+> !danger
+> This is a fork of [Prism](https://prismjs.com) intended for ESM
+> Some things will be slightly different.
+
+## Turn on auto-highlight
+
+Auto highlighting is disabled by default. To turn it on, do the following:
+
+```js
+import { Prism } from "prism-esm"
+
+Prism.manual = false
+```
+
+## Loading languages
+
+```js
+import { Prism } from "prism-esm"
+import { loader as RubyLoader } from "prism-esm/components/prism-ruby.js"
+
+RubyLoader(Prism)
+```
+
+## Plugins
+
+```js
+import { Prism } from "prism-esm"
+import { Plugin as Autolinker } from "prism-esm/plugins/autolinker.js"
+
+Autolinker(Prism)
+```
+
 # [Prism](https://prismjs.com/)
 
 [![Build Status](https://github.com/PrismJS/prism/workflows/CI/badge.svg)](https://github.com/PrismJS/prism/actions)

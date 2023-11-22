@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	var stringPattern = /(?:"(?:""|[^"])*"(?!")|'(?:''|[^'])*'(?!'))/.source;
 
 	var number = /\b(?:\d[\da-f]*x|\d+(?:\.\d+)?(?:e[+-]?\d+)?)\b/i;
@@ -322,5 +321,4 @@
 		'operator': /\*\*?|\|\|?|!!?|¦¦?|<[>=]?|>[<=]?|[-+\/=&]|[~¬^]=?/,
 		'punctuation': punctuation
 	};
-
-}(Prism));
+}

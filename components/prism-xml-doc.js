@@ -1,11 +1,10 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	/**
-	 * If the given language is present, it will insert the given doc comment grammar token into it.
-	 *
-	 * @param {string} lang
-	 * @param {any} docComment
-	 */
+	* If the given language is present, it will insert the given doc comment grammar token into it.
+	*
+	* @param {string} lang
+	* @param {any} docComment
+	*/
 	function insertDocComment(lang, docComment) {
 		if (Prism.languages[lang]) {
 			Prism.languages.insertBefore(lang, 'comment', {
@@ -36,5 +35,4 @@
 	insertDocComment('csharp', slashDocComment);
 	insertDocComment('fsharp', slashDocComment);
 	insertDocComment('vbnet', tickDocComment);
-
-}(Prism));
+}

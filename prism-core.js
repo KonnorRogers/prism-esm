@@ -1,12 +1,20 @@
 /// <reference lib="WebWorker"/>
 
-var _self = (typeof window !== 'undefined')
+const _self = (typeof window !== 'undefined')
 	? window   // if in browser
 	: (
 		(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
 			? self // if in worker
 			: {}   // if in node js
 	);
+
+/**
+ * Export the current environment so if users want to assign it to the global scope, they can.
+ * @example
+ *   import { Prism, environment } from "prism-esm"
+ *   environment.Prism = Prism
+ */
+export const environment = _self;
 
 /**
  * Prism: Lightweight, robust, elegant syntax highlighting
@@ -16,8 +24,7 @@ var _self = (typeof window !== 'undefined')
  * @namespace
  * @public
  */
-var Prism = (function (_self) {
-
+export const Prism = (function (_self) {
 	// Private helper vars
 	var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
 	var uniqueId = 0;
@@ -761,56 +768,6 @@ var Prism = (function (_self) {
 
 		Token: Token
 	};
-	_self.Prism = _;
-
-
-	// Typescript note:
-	// The following can be used to import the Token type in JSDoc:
-	//
-	//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
-
-	/**
-	 * Creates a new token.
-	 *
-	 * @param {string} type See {@link Token#type type}
-	 * @param {string | TokenStream} content See {@link Token#content content}
-	 * @param {string|string[]} [alias] The alias(es) of the token.
-	 * @param {string} [matchedStr=""] A copy of the full string this token was created from.
-	 * @class
-	 * @global
-	 * @public
-	 */
-	function Token(type, content, alias, matchedStr) {
-		/**
-		 * The type of the token.
-		 *
-		 * This is usually the key of a pattern in a {@link Grammar}.
-		 *
-		 * @type {string}
-		 * @see GrammarToken
-		 * @public
-		 */
-		this.type = type;
-		/**
-		 * The strings or tokens contained by this token.
-		 *
-		 * This will be a token stream if the pattern matched also defined an `inside` grammar.
-		 *
-		 * @type {string | TokenStream}
-		 * @public
-		 */
-		this.content = content;
-		/**
-		 * The alias(es) of the token.
-		 *
-		 * @type {string|string[]}
-		 * @see GrammarToken
-		 * @public
-		 */
-		this.alias = alias;
-		// Copy of the full string this token was created from
-		this.length = (matchedStr || '').length | 0;
-	}
 
 	/**
 	 * A token stream is an array of strings and {@link Token Token} objects.
@@ -827,58 +784,6 @@ var Prism = (function (_self) {
 	 * @global
 	 * @public
 	 */
-
-	/**
-	 * Converts the given token or token stream to an HTML representation.
-	 *
-	 * The following hooks will be run:
-	 * 1. `wrap`: On each {@link Token}.
-	 *
-	 * @param {string | Token | TokenStream} o The token or token stream to be converted.
-	 * @param {string} language The name of current language.
-	 * @returns {string} The HTML representation of the token or token stream.
-	 * @memberof Token
-	 * @static
-	 */
-	Token.stringify = function stringify(o, language) {
-		if (typeof o == 'string') {
-			return o;
-		}
-		if (Array.isArray(o)) {
-			var s = '';
-			o.forEach(function (e) {
-				s += stringify(e, language);
-			});
-			return s;
-		}
-
-		var env = {
-			type: o.type,
-			content: stringify(o.content, language),
-			tag: 'span',
-			classes: ['token', o.type],
-			attributes: {},
-			language: language
-		};
-
-		var aliases = o.alias;
-		if (aliases) {
-			if (Array.isArray(aliases)) {
-				Array.prototype.push.apply(env.classes, aliases);
-			} else {
-				env.classes.push(aliases);
-			}
-		}
-
-		_.hooks.run('wrap', env);
-
-		var attributes = '';
-		for (var name in env.attributes) {
-			attributes += ' ' + name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
-		}
-
-		return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
-	};
 
 	/**
 	 * @param {RegExp} pattern
@@ -1201,17 +1106,108 @@ var Prism = (function (_self) {
 	}
 
 	return _;
-
 }(_self));
 
-if (typeof module !== 'undefined' && module.exports) {
-	module.exports = Prism;
+// Typescript note:
+// The following can be used to import the Token type in JSDoc:
+//
+//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
+
+/**
+ * Creates a new token.
+ *
+ * @param {string} type See {@link Token#type type}
+ * @param {string | TokenStream} content See {@link Token#content content}
+ * @param {string|string[]} [alias] The alias(es) of the token.
+ * @param {string} [matchedStr=""] A copy of the full string this token was created from.
+ * @class
+ * @global
+ * @public
+ */
+export function Token(type, content, alias, matchedStr) {
+	/**
+		* The type of the token.
+		*
+		* This is usually the key of a pattern in a {@link Grammar}.
+		*
+		* @type {string}
+		* @see GrammarToken
+		* @public
+		*/
+	this.type = type;
+	/**
+		* The strings or tokens contained by this token.
+		*
+		* This will be a token stream if the pattern matched also defined an `inside` grammar.
+		*
+		* @type {string | TokenStream}
+		* @public
+		*/
+	this.content = content;
+	/**
+		* The alias(es) of the token.
+		*
+		* @type {string|string[]}
+		* @see GrammarToken
+		* @public
+		*/
+	this.alias = alias;
+	// Copy of the full string this token was created from
+	this.length = (matchedStr || '').length | 0;
 }
 
-// hack for components to work correctly in node.js
-if (typeof global !== 'undefined') {
-	global.Prism = Prism;
-}
+
+/**
+	* Converts the given token or token stream to an HTML representation.
+	*
+	* The following hooks will be run:
+	* 1. `wrap`: On each {@link Token}.
+	*
+	* @param {string | Token | TokenStream} o The token or token stream to be converted.
+	* @param {string} language The name of current language.
+	* @returns {string} The HTML representation of the token or token stream.
+	* @memberof Token
+	* @static
+	*/
+Token.stringify = function stringify(o, language) {
+	if (typeof o == 'string') {
+		return o;
+	}
+	if (Array.isArray(o)) {
+		var s = '';
+		o.forEach(function (e) {
+			s += stringify(e, language);
+		});
+		return s;
+	}
+
+	var env = {
+		type: o.type,
+		content: stringify(o.content, language),
+		tag: 'span',
+		classes: ['token', o.type],
+		attributes: {},
+		language: language
+	};
+
+	var aliases = o.alias;
+	if (aliases) {
+		if (Array.isArray(aliases)) {
+			Array.prototype.push.apply(env.classes, aliases);
+		} else {
+			env.classes.push(aliases);
+		}
+	}
+
+	_.hooks.run('wrap', env);
+
+	var attributes = '';
+	for (var name in env.attributes) {
+		attributes += ' ' + name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+	}
+
+	return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
+};
 
 // some additional documentation/types
 

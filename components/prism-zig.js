@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	function literal(str) {
 		return function () { return str; };
 	}
@@ -13,20 +12,20 @@
 	var TYPE = '(?!\\s)(?:!?\\s*(?:' + PREFIX_TYPE_OP + '\\s*)*' + SUFFIX_EXPR + ')+';
 
 	/*
-	 * A simplified grammar for Zig compile time type literals:
-	 *
-	 * TypeExpr = ( "!"? PREFIX_TYPE_OP* SUFFIX_EXPR )+
-	 *
-	 * SUFFIX_EXPR = ( \b "promise" \b | ( \b "error" "." )? IDENTIFIER ( "." IDENTIFIER )* (?! \s+ IDENTIFIER ) )
-	 *
-	 * PREFIX_TYPE_OP = "?"
-	 *                | \b "promise" "->"
-	 *                | ( "[" [^\[\]]* "]" | "*" | "**" ) ( ALIGN | "const" \b | "volatile" \b | "allowzero" \b )*
-	 *
-	 * ALIGN = "align" "(" ( [^()] | "(" [^()]* ")" )* ")"
-	 *
-	 * IDENTIFIER = \b (?! KEYWORD ) [a-zA-Z_] \w* \b
-	 *
+	* A simplified grammar for Zig compile time type literals:
+	*
+	* TypeExpr = ( "!"? PREFIX_TYPE_OP* SUFFIX_EXPR )+
+	*
+	* SUFFIX_EXPR = ( \b "promise" \b | ( \b "error" "." )? IDENTIFIER ( "." IDENTIFIER )* (?! \s+ IDENTIFIER ) )
+	*
+	* PREFIX_TYPE_OP = "?"
+	*                | \b "promise" "->"
+	*                | ( "[" [^\[\]]* "]" | "*" | "**" ) ( ALIGN | "const" \b | "volatile" \b | "allowzero" \b )*
+	*
+	* ALIGN = "align" "(" ( [^()] | "(" [^()]* ")" )* ")"
+	*
+	* IDENTIFIER = \b (?! KEYWORD ) [a-zA-Z_] \w* \b
+	*
 	*/
 
 	Prism.languages.zig = {
@@ -97,5 +96,4 @@
 			obj.inside = Prism.languages.zig;
 		}
 	});
-
-}(Prism));
+}

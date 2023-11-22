@@ -1,5 +1,4 @@
-(function (Prism) {
-
+export function loader (Prism) {
 	var attributes = {
 		pattern: /(^[ \t]*)\[(?!\[)(?:(["'$`])(?:(?!\2)[^\\]|\\.)*\2|\[(?:[^\[\]\\]|\\.)*\]|[^\[\]\\"'$`]|\\.)*\]/m,
 		lookbehind: true,
@@ -231,4 +230,4 @@
 	});
 
 	Prism.languages.adoc = Prism.languages.asciidoc;
-}(Prism));
+};
