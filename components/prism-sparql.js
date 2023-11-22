@@ -1,6 +1,8 @@
 import { loader as turtleLoader } from "./prism-turtle.js"
 export function loader (Prism) {
-	turtleLoader(Prism)
+	if (!Prism.languages.turtle) {
+		turtleLoader(Prism)
+	}
 	Prism.languages.sparql = Prism.languages.extend('turtle', {
 		'boolean': /\b(?:false|true)\b/i,
 		'variable': {

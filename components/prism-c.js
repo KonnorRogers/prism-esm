@@ -1,6 +1,8 @@
 import { loader as clikeLoader } from "./prism-clike.js"
 export function loader (Prism) {
-	clikeLoader(Prism)
+	if (!Prism.languages.clike) {
+		clikeLoader(Prism)
+	}
 	Prism.languages.c = Prism.languages.extend('clike', {
 		'comment': {
 			pattern: /\/\/(?:[^\r\n\\]|\\(?:\r\n?|\n|(?![\r\n])))*|\/\*[\s\S]*?(?:\*\/|$)/,

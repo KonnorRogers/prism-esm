@@ -1,6 +1,8 @@
 import { loader as clikeLoader } from "./prism-clike.js"
 export function loader (Prism) {
-	clikeLoader(Prism)
+	if (!Prism.languages.clike) {
+		clikeLoader(Prism)
+	}
 	Prism.languages.gamemakerlanguage = Prism.languages.gml = Prism.languages.extend('clike', {
 		'keyword': /\b(?:break|case|continue|default|do|else|enum|exit|for|globalvar|if|repeat|return|switch|until|var|while)\b/,
 		'number': /(?:\b0x[\da-f]+|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?)[ulf]{0,4}/i,

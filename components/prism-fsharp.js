@@ -1,6 +1,8 @@
 import { loader as clikeLoader } from "./prism-clike.js"
 export function loader (Prism) {
-	clikeLoader(Prism)
+	if (!Prism.languages.clike) {
+		clikeLoader(Prism)
+	}
 	Prism.languages.fsharp = Prism.languages.extend('clike', {
 		'comment': [
 			{

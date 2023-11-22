@@ -1,6 +1,8 @@
 import { loader as javascriptLoader } from "./prism-javascript.js"
 export function loader (Prism) {
-	javascriptLoader(Prism)
+	if (!Prism.languages.javascript) {
+		javascriptLoader(Prism)
+	}
 	// Ignore comments starting with { to privilege string interpolation highlighting
 	var comment = /#(?!\{).+/;
 	var interpolation = {

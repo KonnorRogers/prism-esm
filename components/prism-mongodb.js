@@ -1,6 +1,8 @@
 import { loader as javascriptLoader } from "./prism-javascript.js"
 export function loader (Prism) {
-	javascriptLoader(Prism)
+	if (!Prism.languages.javascript) {
+		javascriptLoader(Prism)
+	}
 
 	var operators = [
 		// query and projection

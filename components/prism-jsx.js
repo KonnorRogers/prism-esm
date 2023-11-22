@@ -2,8 +2,12 @@ import { loader as markupLoader } from './prism-markup.js'
 import { loader as javascriptLoader } from './prism-javascript.js'
 
 export function loader (Prism) {
-	markupLoader(Prism)
-	javascriptLoader(Prism)
+	if (!Prism.languages.markup) {
+		markupLoader(Prism)
+	}
+	if (!Prism.languages.javascript) {
+		javascriptLoader(Prism)
+	}
 	var javascript = Prism.util.clone(Prism.languages.javascript);
 
 	var space = /(?:\s|\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))\*\/)/.source;

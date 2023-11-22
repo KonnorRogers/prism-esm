@@ -1,6 +1,8 @@
 import { loader as clikeLoader } from "./prism-clike.js"
 export function loader (Prism) {
-	clikeLoader(Prism)
+	if (!Prism.languages.clike) {
+		clikeLoader(Prism)
+	}
 	Prism.languages.kotlin = Prism.languages.extend('clike', {
 		'keyword': {
 			// The lookbehind prevents wrong highlighting of e.g. kotlin.properties.get

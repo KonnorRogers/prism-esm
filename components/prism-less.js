@@ -8,7 +8,9 @@ export function loader (Prism) {
  	A comment before a mixin usage prevents the latter to be properly highlighted.
  	*/
 
- 	cssLoader(Prism)
+	if (!Prism.languages.css) {
+ 		cssLoader(Prism)
+ 	}
 
 	Prism.languages.less = Prism.languages.extend('css', {
 		'comment': [

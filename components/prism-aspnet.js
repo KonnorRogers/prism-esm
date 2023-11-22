@@ -1,6 +1,9 @@
 import { loader as markupLoader } from "./prism-markup.js"
 export function loader (Prism) {
-	markupLoader(Prism)
+	if (!Prism.languages.markup) {
+		markupLoader(Prism)
+	}
+
 	Prism.languages.aspnet = Prism.languages.extend('markup', {
 		'page-directive': {
 			pattern: /<%\s*@.*%>/,

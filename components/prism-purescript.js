@@ -1,6 +1,8 @@
 import { loader as haskellLoader } from "./prism-haskell.js"
 export function loader (Prism) {
-	haskellLoader(Prism)
+	if (!Prism.languages.haskell) {
+		haskellLoader(Prism)
+	}
 	Prism.languages.purescript = Prism.languages.extend('haskell', {
 		'keyword': /\b(?:ado|case|class|data|derive|do|else|forall|if|in|infixl|infixr|instance|let|module|newtype|of|primitive|then|type|where)\b|∀/,
 

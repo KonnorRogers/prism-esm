@@ -1,6 +1,9 @@
 import { loader as sqlLoader } from "./prism-sql.js"
 export function loader (Prism) {
-	sqlLoader(Prism)
+	if (!Prism.languages.sql) {
+		sqlLoader(Prism)
+	}
+
 	Prism.languages.plsql = Prism.languages.extend('sql', {
 		'comment': {
 			pattern: /\/\*[\s\S]*?\*\/|--.*/,

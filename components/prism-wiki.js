@@ -1,7 +1,9 @@
 import { loader as markupLoader } from "./prism-markup.js"
 
 export function loader (Prism) {
-	markupLoader(Prism)
+	if (!Prism.languages.markup) {
+		markupLoader(Prism)
+	}
 	Prism.languages.wiki = Prism.languages.extend('markup', {
 		'block-comment': {
 			pattern: /(^|[^\\])\/\*[\s\S]*?\*\//,

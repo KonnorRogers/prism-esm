@@ -1,6 +1,8 @@
 import { loader as javaLoader } from "./prism-java.js"
 export function loader (Prism) {
-	javaLoader(Prism)
+	if (!Prism.languages.java) {
+		javaLoader(Prism)
+	}
 	Prism.languages.scala = Prism.languages.extend('java', {
 		'triple-quoted-string': {
 			pattern: /"""[\s\S]*?"""/,

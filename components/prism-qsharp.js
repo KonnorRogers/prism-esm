@@ -1,6 +1,8 @@
 import { loader as clikeLoader } from "./prism-clike.js"
 export function loader (Prism) {
-	clikeLoader(Prism)
+	if (!Prism.languages.clike) {
+		clikeLoader(Prism)
+	}
 	/**
 	* Replaces all placeholders "<<n>>" of given pattern with the n-th replacement (zero based).
 	*

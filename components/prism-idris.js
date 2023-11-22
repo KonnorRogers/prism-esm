@@ -1,7 +1,10 @@
 import { loader as haskellLoader } from "./prism-haskell.js"
 
 export function loader (Prism) {
-	haskellLoader(Prism)
+	if (!Prism.languages.haskell) {
+		haskellLoader(Prism)
+	}
+
 	Prism.languages.idris = Prism.languages.extend('haskell', {
 		'comment': {
 			pattern: /(?:(?:--|\|\|\|).*$|\{-[\s\S]*?-\})/m,

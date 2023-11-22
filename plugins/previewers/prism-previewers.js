@@ -1,5 +1,4 @@
-(function () {
-
+export function Plugin (Prism) {
 	if (typeof Prism === 'undefined' || typeof document === 'undefined' || !Function.prototype.bind) {
 		return;
 	}
@@ -708,5 +707,4 @@
 	for (var previewer in previewers) {
 		previewers[previewer].create();
 	}
-
-}());
+}

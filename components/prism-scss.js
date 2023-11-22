@@ -1,6 +1,8 @@
 import { loader as cssLoader } from "./prism-css.js"
 export function loader (Prism) {
-	cssLoader(Prism)
+	if (!Prism.languages.css) {
+		cssLoader(Prism)
+	}
 	Prism.languages.scss = Prism.languages.extend('css', {
 		'comment': {
 			pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|\/\/.*)/,

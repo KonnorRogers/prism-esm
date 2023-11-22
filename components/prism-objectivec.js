@@ -1,6 +1,8 @@
 import { loader as cLoader } from "./prism-c.js"
 export function loader (Prism) {
-	cLoader(Prism)
+	if (!Prism.languages.c) {
+		cLoader(Prism)
+	}
 	Prism.languages.objectivec = Prism.languages.extend('c', {
 		'string': {
 			pattern: /@?"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/,

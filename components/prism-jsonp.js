@@ -1,7 +1,9 @@
 import { loader as jsonLoader } from "./prism-json.js"
 
 export function loader (Prism) {
-	jsonLoader(Prism)
+	if (!Prism.languages.json) {
+		jsonLoader(Prism)
+	}
 
 	Prism.languages.jsonp = Prism.languages.extend('json', {
 		'punctuation': /[{}[\]();,.]/

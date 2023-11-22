@@ -1,6 +1,8 @@
 import { loader as javadoclikeLoader } from "./prism-javadoclike.js"
 export function loader (Prism) {
-	javadoclikeLoader(Prism)
+	if (!Prism.languages.javadoclike) {
+		javadoclikeLoader(Prism)
+	}
 	var javascript = Prism.languages.javascript;
 
 	var type = /\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})+\}/.source;

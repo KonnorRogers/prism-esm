@@ -1,6 +1,8 @@
 import { loader as markupLoader } from "./prism-markup.js"
 export function loader (Prism) {
-	markupLoader(Prism)
+	if (!Prism.languages.markup) {
+		markupLoader(Prism)
+	}
 	Prism.languages.velocity = Prism.languages.extend('markup', {});
 
 	var velocity = {

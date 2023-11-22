@@ -2,8 +2,13 @@ import { loader as jsxLoader } from "./prism-jsx.js"
 import { loader as typescriptLoader } from "./prism-typescript.js"
 
 export function loader (Prism) {
-	jsxLoader(Prism)
-	typescriptLoader(Prism)
+	if (!Prism.languages.jsx) {
+		jsxLoader(Prism)
+	}
+
+	if (!Prism.languages.typescript) {
+		typescriptLoader(Prism)
+	}
 	var typescript = Prism.util.clone(Prism.languages.typescript);
 	Prism.languages.tsx = Prism.languages.extend('jsx', typescript);
 

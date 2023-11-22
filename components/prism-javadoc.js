@@ -1,6 +1,8 @@
 import { loader as javadoclikeLoader } from "./prism-javadoclike.js"
 export function loader (Prism) {
-	javadoclikeLoader(Prism)
+	if (!Prism.languages.javadoclikeLoader) {
+		javadoclikeLoader(Prism)
+	}
 	var codeLinePattern = /(^(?:[\t ]*(?:\*\s*)*))[^*\s].*$/m;
 
 	var memberReference = /#\s*\w+(?:\s*\([^()]*\))?/.source;

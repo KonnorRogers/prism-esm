@@ -1,7 +1,8 @@
 import { loader as clikeLoader } from "./prism-clike.js"
-
 export function loader (Prism) {
-	clikeLoader(Prism)
+	if (!Prism.languages.clike) {
+		clikeLoader(Prism)
+	}
 	Prism.languages.haxe = Prism.languages.extend('clike', {
 		'string': {
 			// Strings can be multi-line

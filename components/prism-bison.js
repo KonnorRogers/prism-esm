@@ -1,6 +1,9 @@
 import { loader as cLoader } from "./prism-c.js"
 export function loader (Prism) {
-	cLoader(Prism)
+	if (!Prism.languages.c) {
+		cLoader(Prism)
+	}
+
 	Prism.languages.bison = Prism.languages.extend('c', {});
 
 	Prism.languages.insertBefore('bison', 'comment', {

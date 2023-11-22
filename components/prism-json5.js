@@ -1,6 +1,9 @@
 import { loader as jsonLoader } from "./prism-json.js"
 export function loader (Prism) {
-	jsonLoader(Prism)
+	if (!Prism.languages.json) {
+		jsonLoader(Prism)
+	}
+
 	var string = /("|')(?:\\(?:\r\n?|\n|.)|(?!\1)[^\\\r\n])*\1/;
 
 	Prism.languages.json5 = Prism.languages.extend('json', {

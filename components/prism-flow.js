@@ -1,6 +1,9 @@
 import { loader as javascriptLoader } from "./prism-javascript.js"
 export function loader (Prism) {
-	javascriptLoader(Prism)
+	if (!Prism.languages.javascript) {
+		javascriptLoader(Prism)
+	}
+
 	Prism.languages.flow = Prism.languages.extend('javascript', {});
 
 	Prism.languages.insertBefore('flow', 'keyword', {

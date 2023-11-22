@@ -1,7 +1,9 @@
 import { loader as javadoclikeLoader } from "./prism-javadoclike.js"
 
 export function loader (Prism) {
-	javadoclikeLoader(Prism)
+	if (!Prism.languages.javadoclikeLoader) {
+		javadoclikeLoader(Prism)
+	}
 	var typeExpression = /(?:\b[a-zA-Z]\w*|[|\\[\]])+/.source;
 
 	Prism.languages.phpdoc = Prism.languages.extend('javadoclike', {
