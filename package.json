@@ -41,7 +41,6 @@
 	"devDependencies": {
 		"@types/node-fetch": "^2.5.5",
 		"benchmark": "^2.1.4",
-		"chai": "^4.2.0",
 		"danger": "^10.5.0",
 		"del": "^4.1.1",
 		"docdash": "^1.2.0",
@@ -84,5 +83,8 @@
 			"themes/*.css",
 			"prism.js"
 		]
+	},
+	"dependencies": {
+		"@esm-bundle/chai": "^4.3.4-fix.0"
 	}
 }

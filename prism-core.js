@@ -35,28 +35,6 @@ export const Prism = (function (_self) {
 
 	var _ = {
 		/**
-		 * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
-		 * current page after the page finished loading. This might be a problem if e.g. you wanted to asynchronously load
-		 * additional languages or plugins yourself.
-		 *
-		 * By setting this value to `true`, Prism will not automatically highlight all code elements on the page.
-		 *
-		 * You obviously have to change this value before the automatic highlighting started. To do this, you can add an
-		 * empty Prism object into the global scope before loading the Prism script like this:
-		 *
-		 * ```js
-		 * window.Prism = window.Prism || {};
-		 * Prism.manual = true;
-		 * // add a new <script> to load Prism's script
-		 * ```
-		 *
-		 * @default false
-		 * @type {boolean}
-		 * @memberof Prism
-		 * @public
-		 */
-		manual: _self.Prism && _self.Prism.manual,
-		/**
 		 * By default, if Prism is in a web worker, it assumes that it is in a worker it created itself, so it uses
 		 * `addEventListener` to communicate with its parent instance. However, if you're using Prism manually in your
 		 * own worker, you don't want it to do this.
@@ -1075,18 +1053,14 @@ export const Prism = (function (_self) {
 	if (script) {
 		_.filename = script.src;
 
-		if (script.hasAttribute('data-manual')) {
-			_.manual = true;
-		}
 	}
 
 	function highlightAutomaticallyCallback() {
-		if (!_.manual) {
-			_.highlightAll();
-		}
+		_.highlightAll();
 	}
 
-	if (!_.manual) {
+	// Instead of using `.manual`, make the user import and then call `Prism.highlightAutomatically()`
+	_.highlightAutomatically = function () {
 		// If the document state is "loading", then we'll use DOMContentLoaded.
 		// If the document state is "interactive" and the prism.js script is deferred, then we'll also use the
 		// DOMContentLoaded event because there might be some plugins or languages which have also been deferred and they

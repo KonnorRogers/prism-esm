@@ -1,5 +1,37 @@
 # Prism Changelog
 
+## 2.0.0 (11-22-2023)
+
+- BREAKING_CHANGE: Convert from UMD to ESM.
+- BREAKING_CHANGE: Components no longer automatically bind to globally scoped Prism instance. Instead, now you import the `loader` and pass in the Prism instance which will add a language to the Prism instance. Like so:
+
+```js
+import { Prism } from "prism-esm"
+import { loader as haskellLoader } from "prism-esm/components/prism-haskell.js"
+
+haskellLoader(Prism)
+
+// Loaders will check if they've already loaded. If they've been loaded already, they'll no-op.
+// To force a language to reload itself, pass in `{ force: true }`. Like so:
+haskellLoader(Prism, { force: true })
+```
+
+- BREAKING_CHANGE: Removed the `.manual` flag. To use automatic highlighting, do the following:
+
+```js
+import { Prism } from "prism-esm"
+Prism.highlightAutomatically()
+```
+
+- BREAKING_CHANGE: `Prism` no longer automatically binds to the global for it's environment. To restore the behavior, do the following:
+
+```js
+import { Prism, environment } from "prism-esm"
+environment.Prism = Prism
+```
+
+- BREAKING_CHANGE: `prism/dependencies.js` has been removed. Instead, `loaders` are now responsible for being idempotent.
+
 ## 1.29.0 (2022-08-23)
 
 ### New components
