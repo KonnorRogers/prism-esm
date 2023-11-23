@@ -1,5 +1,9 @@
 import { loader as javadoclikeLoader } from "./prism-javadoclike.js"
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['javadoc']) {
+      return
+    }
 	if (!Prism.languages.javadoclikeLoader) {
 		javadoclikeLoader(Prism)
 	}

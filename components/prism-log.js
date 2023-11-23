@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['log']) {
+      return
+    }
 	// This is a language definition for generic log files.
 	// Since there is no one log format, this language definition has to support all formats to some degree.
 	//

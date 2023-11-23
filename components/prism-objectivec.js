@@ -1,5 +1,9 @@
 import { loader as cLoader } from "./prism-c.js"
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['objectivec']) {
+      return
+    }
 	if (!Prism.languages.c) {
 		cLoader(Prism)
 	}

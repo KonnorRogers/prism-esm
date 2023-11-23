@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['metafont']) {
+      return
+    }
 	Prism.languages.metafont = {
 		// Syntax of METAFONT with the added (public) elements of PlainMETAFONT. Except for internal quantities they are expected to be rarely redefined. Freely inspired by the syntax of Christophe Grandsire for the Crimson Editor.
 		'comment': {

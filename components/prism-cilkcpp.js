@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['cilkcpp']) {
+      return
+    }
 	Prism.languages.cilkcpp = Prism.languages.insertBefore('cpp', 'function', {
 		'parallel-keyword': {
 			pattern: /\bcilk_(?:for|reducer|s(?:cope|pawn|ync))\b/,

@@ -1,5 +1,9 @@
 import { loader as basicLoader } from "./prism-basic.js"
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['vbnet']) {
+      return
+    }
 	if (!Prism.languages.basic) {
 		basicLoader(Prism)
 	}

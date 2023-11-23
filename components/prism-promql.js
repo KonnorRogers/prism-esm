@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['promql']) {
+      return
+    }
 	// Thanks to: https://github.com/prometheus-community/monaco-promql/blob/master/src/promql/promql.ts
 	// As well as: https://kausal.co/blog/slate-prism-add-new-syntax-promql/
 	// PromQL Aggregation Operators

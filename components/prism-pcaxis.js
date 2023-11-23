@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['pcaxis']) {
+      return
+    }
 	Prism.languages.pcaxis = {
 		'string': /"[^"]*"/,
 		'keyword': {

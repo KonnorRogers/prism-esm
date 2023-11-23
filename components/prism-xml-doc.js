@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['xml-doc']) {
+      return
+    }
 	/**
 	* If the given language is present, it will insert the given doc comment grammar token into it.
 	*

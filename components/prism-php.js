@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['php']) {
+      return
+    }
 	/**
  	* Original by Aaron Harun: http://aahacreative.com/2012/07/31/php-syntax-highlighting-prism/
  	* Modified by Miles Johnson: http://milesj.me

@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['docker']) {
+      return
+    }
 	// Many of the following regexes will contain negated lookaheads like `[ \t]+(?![ \t])`. This is a trick to ensure
 	// that quantifiers behave *atomically*. Atomic quantifiers are necessary to prevent exponential backtracking.
 

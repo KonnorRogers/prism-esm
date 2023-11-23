@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['swift']) {
+      return
+    }
 	Prism.languages.swift = {
 		'comment': {
 			// Nested comments are supported up to 2 levels

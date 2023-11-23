@@ -1,5 +1,9 @@
 import { loader as javascriptLoader } from "./prism-javascript.js"
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['n4js']) {
+      return
+    }
 	if (!Prism.languages.javascript) {
 		javascriptLoader(Prism)
 	}

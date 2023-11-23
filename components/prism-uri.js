@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['uri']) {
+      return
+    }
 	// https://tools.ietf.org/html/rfc3986#appendix-A
 
 	Prism.languages.uri = {

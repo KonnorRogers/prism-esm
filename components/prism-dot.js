@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['dot']) {
+      return
+    }
 	// https://www.graphviz.org/doc/info/lang.html
 	var ID = '(?:' + [
 		// an identifier

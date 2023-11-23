@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['linker-script']) {
+      return
+    }
 	Prism.languages['linker-script'] = {
 		'comment': {
 			pattern: /(^|\s)\/\*[\s\S]*?(?:$|\*\/)/,

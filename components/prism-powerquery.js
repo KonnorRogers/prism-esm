@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['powerquery']) {
+      return
+    }
 	// https://docs.microsoft.com/en-us/powerquery-m/power-query-m-language-specification
 
 	Prism.languages.powerquery = {

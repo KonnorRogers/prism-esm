@@ -1,5 +1,9 @@
 // http://avisynth.nl/index.php/The_full_AviSynth_grammar
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['avisynth']) {
+      return
+    }
 	function replace(pattern, replacements) {
 		return pattern.replace(/<<(\d+)>>/g, function (m, index) {
 			return replacements[+index];

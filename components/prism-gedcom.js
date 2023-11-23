@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['gedcom']) {
+      return
+    }
 	Prism.languages.gedcom = {
 		'line-value': {
 			// Preceded by level, optional pointer, and tag

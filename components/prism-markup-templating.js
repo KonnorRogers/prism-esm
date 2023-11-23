@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['markup-templating']) {
+      return
+    }
 	/**
 	* Returns the placeholder for the given language id and index.
 	*

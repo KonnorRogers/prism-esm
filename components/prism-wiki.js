@@ -1,6 +1,10 @@
 import { loader as markupLoader } from "./prism-markup.js"
 
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['wiki']) {
+      return
+    }
 	if (!Prism.languages.markup) {
 		markupLoader(Prism)
 	}

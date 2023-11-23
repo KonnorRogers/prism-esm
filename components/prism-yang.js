@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['yang']) {
+      return
+    }
 	Prism.languages.yang = {
 		// https://tools.ietf.org/html/rfc6020#page-34
 		// http://www.yang-central.org/twiki/bin/view/Main/YangExamples

@@ -1,5 +1,9 @@
 import { loader as javaLoader } from "./prism-java.js"
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['scala']) {
+      return
+    }
 	if (!Prism.languages.java) {
 		javaLoader(Prism)
 	}

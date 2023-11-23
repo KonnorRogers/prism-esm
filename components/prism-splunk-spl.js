@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['splunk-spl']) {
+      return
+    }
 	Prism.languages['splunk-spl'] = {
 		'comment': /`comment\("(?:\\.|[^\\"])*"\)`/,
 		'string': {

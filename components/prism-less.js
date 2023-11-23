@@ -1,5 +1,9 @@
 import { cssLoader } from './prism-css.js'
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['less']) {
+      return
+    }
 	/* FIXME :
  	:extend() is not handled specifically : its highlighting is buggy.
  	Mixin usage must be inside a ruleset to be highlighted.

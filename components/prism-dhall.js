@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['dhall']) {
+      return
+    }
 	// ABNF grammar:
 	// https://github.com/dhall-lang/dhall-lang/blob/master/standard/dhall.abnf
 

@@ -1,7 +1,11 @@
 import { loader as jsxLoader } from "./prism-jsx.js"
 import { loader as typescriptLoader } from "./prism-typescript.js"
 
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['tsx']) {
+      return
+    }
 	if (!Prism.languages.jsx) {
 		jsxLoader(Prism)
 	}

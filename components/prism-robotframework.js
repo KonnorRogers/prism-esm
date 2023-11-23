@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['robotframework']) {
+      return
+    }
 	var comment = {
 		pattern: /(^[ \t]*| {2}|\t)#.*/m,
 		lookbehind: true,

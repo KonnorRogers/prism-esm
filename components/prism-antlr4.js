@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['antlr4']) {
+      return
+    }
 	Prism.languages.antlr4 = {
 		'comment': /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
 		'string': {

@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['shell-session']) {
+      return
+    }
 	// CAREFUL!
 	// The following patterns are concatenated, so the group referenced by a back reference is non-obvious!
 

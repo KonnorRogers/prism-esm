@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['rego']) {
+      return
+    }
 	// https://www.openpolicyagent.org/docs/latest/policy-reference/
 
 	Prism.languages.rego = {

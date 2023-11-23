@@ -1,5 +1,9 @@
 import { loader as jsonLoader } from "./prism-json.js"
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['json5']) {
+      return
+    }
 	if (!Prism.languages.json) {
 		jsonLoader(Prism)
 	}

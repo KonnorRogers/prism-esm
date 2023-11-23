@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['pure']) {
+      return
+    }
 	// https://agraef.github.io/pure-docs/pure.html#lexical-matters
 
 	Prism.languages.pure = {

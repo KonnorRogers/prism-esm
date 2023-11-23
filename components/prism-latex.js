@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['latex']) {
+      return
+    }
 	var funcPattern = /\\(?:[^a-z()[\]]|[a-z*]+)/i;
 	var insideEqu = {
 		'equation-command': {

@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['django']) {
+      return
+    }
 // Django/Jinja2 syntax definition for Prism.js <http://prismjs.com> syntax highlighter.
 // Mostly it works OK but can paint code incorrectly on complex html/template tag combinations.
 	Prism.languages.django = {

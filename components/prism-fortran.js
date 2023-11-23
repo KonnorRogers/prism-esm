@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['fortran']) {
+      return
+    }
 	Prism.languages.fortran = {
 		'quoted-number': {
 			pattern: /[BOZ](['"])[A-F0-9]+\1/i,

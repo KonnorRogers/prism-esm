@@ -1,7 +1,11 @@
 // GitHub: https://github.com/apache/avro
 // Docs: https://avro.apache.org/docs/current/idl.html
 
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['avro-idl']) {
+      return
+    }
 	Prism.languages['avro-idl'] = {
 		'comment': {
 			pattern: /\/\/.*|\/\*[\s\S]*?\*\//,

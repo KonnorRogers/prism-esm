@@ -1,6 +1,10 @@
 import { loader as haskellLoader } from "./prism-haskell.js"
 
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['idris']) {
+      return
+    }
 	if (!Prism.languages.haskell) {
 		haskellLoader(Prism)
 	}

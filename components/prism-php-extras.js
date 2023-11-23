@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['php-extras']) {
+      return
+    }
 	Prism.languages.insertBefore('php', 'variable', {
 		'this': {
 			pattern: /\$this\b/,

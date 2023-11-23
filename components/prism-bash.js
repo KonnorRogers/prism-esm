@@ -1,4 +1,8 @@
-export function (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['bash']) {
+      return
+    }
 	// $ set | grep '^[A-Z][^[:space:]]*=' | cut -d= -f1 | tr '\n' '|'
 	// + LC_ALL, RANDOM, REPLY, SECONDS.
 	// + make sure PS1..4 are here as they are not always set,

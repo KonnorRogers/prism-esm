@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['pascaligo']) {
+      return
+    }
 	// Pascaligo is a layer 2 smart contract language for the tezos blockchain
 
 	var braces = /\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/.source;

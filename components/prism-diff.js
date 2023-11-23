@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['diff']) {
+      return
+    }
 	Prism.languages.diff = {
 		'coord': [
 			// Match all kinds of coord lines (prefixed by "+++", "---" or "***").

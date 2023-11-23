@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['jsstacktrace']) {
+      return
+    }
 	Prism.languages.jsstacktrace = {
 		'error-message': {
 			pattern: /^\S.*/m,

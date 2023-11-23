@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['bicep']) {
+      return
+    }
 	// based loosely upon: https://github.com/Azure/bicep/blob/main/src/textmate/bicep.tmlanguage
 	Prism.languages.bicep = {
 		'comment': [

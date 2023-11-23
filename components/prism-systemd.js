@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['systemd']) {
+      return
+    }
 	// https://www.freedesktop.org/software/systemd/man/systemd.syntax.html
 	var comment = {
 		pattern: /^[;#].*/m,

@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['abap']) {
+      return
+    }
 	Prism.languages.abap = {
 		'comment': /^\*.*/m,
 		'string': /(`|')(?:\\.|(?!\1)[^\\\r\n])*\1/,

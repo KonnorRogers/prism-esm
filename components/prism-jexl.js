@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['jexl']) {
+      return
+    }
 	Prism.languages.jexl = {
 		'string': /(["'])(?:\\[\s\S]|(?!\1)[^\\])*\1/,
 		'transform': {

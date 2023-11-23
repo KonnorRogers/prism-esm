@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['monkey']) {
+      return
+    }
 	Prism.languages.monkey = {
 		'comment': {
 			pattern: /^#Rem\s[\s\S]*?^#End|'.+/im,

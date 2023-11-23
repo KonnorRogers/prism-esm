@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['wolfram']) {
+      return
+    }
 	Prism.languages.wolfram = {
 		'comment': // Allow one level of nesting - note: regex taken from applescipt
 			/\(\*(?:\(\*(?:[^*]|\*(?!\)))*\*\)|(?!\(\*)[\s\S])*?\*\)/,

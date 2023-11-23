@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['basic']) {
+      return
+    }
 	Prism.languages.basic = {
 		'comment': {
 			pattern: /(?:!|REM\b).+/i,

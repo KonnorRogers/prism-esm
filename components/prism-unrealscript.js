@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['unrealscript']) {
+      return
+    }
 	Prism.languages.unrealscript = {
 		'comment': /\/\/.*|\/\*[\s\S]*?\*\//,
 		'string': {

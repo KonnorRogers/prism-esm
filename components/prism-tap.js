@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['tap']) {
+      return
+    }
 	// https://en.wikipedia.org/wiki/Test_Anything_Protocol
 
 	Prism.languages.tap = {

@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['ftl']) {
+      return
+    }
 	// https://freemarker.apache.org/docs/dgui_template_exp.html
 
 	// FTL expression with 4 levels of nesting supported

@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['js-templates']) {
+      return
+    }
 	var templateString = Prism.languages.javascript['template-string'];
 
 	// see the pattern in prism-javascript.js

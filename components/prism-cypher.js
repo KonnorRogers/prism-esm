@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['cypher']) {
+      return
+    }
 	Prism.languages.cypher = {
 		// https://neo4j.com/docs/cypher-manual/current/syntax/comments/
 		'comment': /\/\/.*/,

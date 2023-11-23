@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['pug']) {
+      return
+    }
 	// TODO:
 	// - Add CSS highlighting inside <style> tags
 	// - Add support for multi-line code blocks

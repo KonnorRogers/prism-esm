@@ -1,6 +1,10 @@
 // based on https://github.com/microsoft/AL/blob/master/grammar/alsyntax.tmlanguage
 
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['al']) {
+      return
+    }
 	Prism.languages.al = {
 		'comment': /\/\/.*|\/\*[\s\S]*?\*\//,
 		'string': {

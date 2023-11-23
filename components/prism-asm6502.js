@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['asm6502']) {
+      return
+    }
 	Prism.languages.asm6502 = {
 		'comment': /;.*/,
 		'directive': {

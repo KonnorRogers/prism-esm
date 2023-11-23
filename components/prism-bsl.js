@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['bsl']) {
+      return
+    }
 	/* eslint-disable no-misleading-character-class */
 
 	// 1C:Enterprise

@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['kumir']) {
+      return
+    }
 	/* eslint-disable regexp/no-dupe-characters-character-class */
 	/**
 	* Regular expression for characters that are not allowed in identifiers.

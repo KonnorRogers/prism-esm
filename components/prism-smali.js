@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['smali']) {
+      return
+    }
 	// Test files for the parser itself:
 	// https://github.com/JesusFreke/smali/tree/master/smali/src/test/resources/LexerTest
 

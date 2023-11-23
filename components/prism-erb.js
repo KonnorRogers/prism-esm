@@ -1,4 +1,8 @@
-export function loader (Prism) {
+export function loader (Prism, options) {
+    if (typeof Prism === 'undefined') return
+    if (options?.force !== true || Prism.languages['erb']) {
+      return
+    }
 	Prism.languages.erb = {
 		'delimiter': {
 			pattern: /^(\s*)<%=?|%>(?=\s*$)/,
