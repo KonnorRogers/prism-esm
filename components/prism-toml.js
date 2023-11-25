@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['toml']) {
+    if (options?.force !== true && Prism.languages['toml']) {
       return
     }
 	var key = /(?:[\w-]+|'[^'\n\r]*'|"(?:\\.|[^\\"\r\n])*")/.source;

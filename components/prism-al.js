@@ -2,7 +2,7 @@
 
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['al']) {
+    if (options?.force !== true && Prism.languages['al']) {
       return
     }
 	Prism.languages.al = {

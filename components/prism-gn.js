@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['gn']) {
+    if (options?.force !== true && Prism.languages['gn']) {
       return
     }
 	// https://gn.googlesource.com/gn/+/refs/heads/main/docs/reference.md#grammar

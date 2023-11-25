@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['jexl']) {
+    if (options?.force !== true && Prism.languages['jexl']) {
       return
     }
 	Prism.languages.jexl = {

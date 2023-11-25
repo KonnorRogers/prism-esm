@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['powershell']) {
+    if (options?.force !== true && Prism.languages['powershell']) {
       return
     }
 	var powershell = Prism.languages.powershell = {

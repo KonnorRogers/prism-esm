@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['latex']) {
+    if (options?.force !== true && Prism.languages['latex']) {
       return
     }
 	var funcPattern = /\\(?:[^a-z()[\]]|[a-z*]+)/i;

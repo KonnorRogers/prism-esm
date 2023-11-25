@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['diff']) {
+    if (options?.force !== true && Prism.languages['diff']) {
       return
     }
 	Prism.languages.diff = {

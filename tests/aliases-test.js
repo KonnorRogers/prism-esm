@@ -9,7 +9,6 @@ import * as PrismLoader from './helper/prism-loader.js'
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const languages = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../components.json"), { encoding: "utf-8" }))
 
-
 function toArray(value) {
 	if (Array.isArray(value)) {
 		return value;
@@ -43,8 +42,8 @@ for (const lang in languages) {
 			});
 		}
 
-		it('- should known all aliases', async function () {
-			let loadedLanguages = new Set(Object.keys((await PrismLoader.createInstance(lang)).languages));
+		it('- should known all aliases', function () {
+			let loadedLanguages = new Set(Object.keys((PrismLoader.createInstance(lang)).languages));
 
 			// check that all aliases are defined
 			toArray(languages[lang].alias).forEach(alias => {

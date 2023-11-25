@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['livescript']) {
+    if (options?.force !== true && Prism.languages['livescript']) {
       return
     }
 	Prism.languages.livescript = {

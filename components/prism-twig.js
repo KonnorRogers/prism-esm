@@ -1,8 +1,13 @@
+import { loader as markupTemplatingLoader } from "./prism-markup-templating.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['twig']) {
+    if (options?.force !== true && Prism.languages['twig']) {
       return
     }
+
+    markupTemplatingLoader(Prism)
+
 	Prism.languages.twig = {
 		'comment': /^\{#[\s\S]*?#\}$/,
 

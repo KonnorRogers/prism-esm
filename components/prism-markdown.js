@@ -2,12 +2,12 @@ import { loader as markupLoader } from "./prism-markup.js"
 
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['markdown']) {
+
+    if (options?.force !== true && Prism.languages['markdown']) {
       return
     }
-	if (!Prism.languages.markup) {
-		markupLoader(Prism)
-	}
+
+	markupLoader(Prism)
 
 	// Allow only one line break
 	var inner = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?![\r\n]))/.source;
@@ -32,8 +32,8 @@ export function loader (Prism, options) {
 	var tableRow = /\|?__(?:\|__)+\|?(?:(?:\n|\r\n?)|(?![\s\S]))/.source.replace(/__/g, function () { return tableCell; });
 	var tableLine = /\|?[ \t]*:?-{3,}:?[ \t]*(?:\|[ \t]*:?-{3,}:?[ \t]*)+\|?(?:\n|\r\n?)/.source;
 
-
 	Prism.languages.markdown = Prism.languages.extend('markup', {});
+
 	Prism.languages.insertBefore('markdown', 'prolog', {
 		'front-matter-block': {
 			pattern: /(^(?:\s*[\r\n])?)---(?!.)[\s\S]*?[\r\n]---(?!.)/,
@@ -259,6 +259,8 @@ export function loader (Prism, options) {
 		}
 	});
 
+
+
 	['url', 'bold', 'italic', 'strike'].forEach(function (token) {
 		['url', 'bold', 'italic', 'strike', 'code-snippet'].forEach(function (inside) {
 			if (token !== inside) {
@@ -266,6 +268,7 @@ export function loader (Prism, options) {
 			}
 		});
 	});
+
 
 	Prism.hooks.add('after-tokenize', function (env) {
 		if (env.language !== 'markdown' && env.language !== 'md') {
@@ -328,6 +331,7 @@ export function loader (Prism, options) {
 
 		walkTokens(env.tokens);
 	});
+
 
 	Prism.hooks.add('wrap', function (env) {
 		if (env.type !== 'code-block') {
@@ -420,4 +424,5 @@ export function loader (Prism, options) {
 	}
 
 	Prism.languages.md = Prism.languages.markdown;
+
 }

@@ -1,8 +1,13 @@
+import { loader as markupLoader } from "./prism-markup.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['css']) {
+    if (options?.force !== true && Prism.languages['css']) {
       return
     }
+
+	markupLoader(Prism)
+
 	var string = /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
 
 	Prism.languages.css = {

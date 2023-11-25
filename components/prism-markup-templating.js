@@ -1,8 +1,13 @@
+import { loader as markupLoader } from "./prism-markup.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['markup-templating']) {
+    if (options?.force !== true && Prism.languages['markup-templating']) {
       return
     }
+
+    markupLoader(Prism)
+
 	/**
 	* Returns the placeholder for the given language id and index.
 	*

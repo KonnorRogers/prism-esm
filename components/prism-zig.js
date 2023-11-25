@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['zig']) {
+    if (options?.force !== true && Prism.languages['zig']) {
       return
     }
 	function literal(str) {

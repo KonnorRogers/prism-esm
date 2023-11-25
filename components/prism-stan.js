@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['stan']) {
+    if (options?.force !== true && Prism.languages['stan']) {
       return
     }
 	// https://mc-stan.org/docs/2_28/reference-manual/bnf-grammars.html

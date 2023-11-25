@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['brainfuck']) {
+    if (options?.force !== true && Prism.languages['brainfuck']) {
       return
     }
 	Prism.languages.brainfuck = {

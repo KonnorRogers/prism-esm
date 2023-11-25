@@ -1,7 +1,7 @@
 import { loader as clikeLoader } from "./prism-clike.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['protobuf']) {
+    if (options?.force !== true && Prism.languages['protobuf']) {
       return
     }
 	if (!Prism.languages.clike) {

@@ -1,12 +1,17 @@
+import { loader as markupLoader } from "./prism-markup.js"
+import { loader as javaLoader } from "./prism-java.js"
 import { loader as javadoclikeLoader } from "./prism-javadoclike.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['javadoc']) {
+    if (options?.force !== true && Prism.languages['javadoc']) {
       return
     }
-	if (!Prism.languages.javadoclikeLoader) {
-		javadoclikeLoader(Prism)
-	}
+
+	markupLoader(Prism)
+	javaLoader(Prism)
+	javadoclikeLoader(Prism)
+
 	var codeLinePattern = /(^(?:[\t ]*(?:\*\s*)*))[^*\s].*$/m;
 
 	var memberReference = /#\s*\w+(?:\s*\([^()]*\))?/.source;

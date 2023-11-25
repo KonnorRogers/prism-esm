@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['yaml']) {
+    if (options?.force !== true && Prism.languages['yaml']) {
       return
     }
 	// https://yaml.org/spec/1.2/spec.html#c-ns-anchor-property

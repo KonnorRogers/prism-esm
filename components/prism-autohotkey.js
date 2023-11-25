@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['autohotkey']) {
+    if (options?.force !== true && Prism.languages['autohotkey']) {
       return
     }
 	// NOTES - follows first-first highlight method, block is locked after highlight, different from SyntaxHl

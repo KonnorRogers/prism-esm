@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['splunk-spl']) {
+    if (options?.force !== true && Prism.languages['splunk-spl']) {
       return
     }
 	Prism.languages['splunk-spl'] = {

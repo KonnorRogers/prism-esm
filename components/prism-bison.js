@@ -1,7 +1,7 @@
 import { loader as cLoader } from "./prism-c.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['bison']) {
+    if (options?.force !== true && Prism.languages['bison']) {
       return
     }
 	if (!Prism.languages.c) {

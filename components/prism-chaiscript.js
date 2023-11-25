@@ -1,12 +1,13 @@
 import { loader as clikeLoader } from "./prism-clike.js"
+import { loader as cppLoader } from "./prism-cpp.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['chaiscript']) {
+    if (options?.force !== true && Prism.languages['chaiscript']) {
       return
     }
-	if (!Prism.languages.javadoclikeLoader) {
-		clikeLoader(Prism)
-	}
+
+	clikeLoader(Prism)
+	cppLoader(Prism)
 
 	Prism.languages.chaiscript = Prism.languages.extend('clike', {
 		'string': {

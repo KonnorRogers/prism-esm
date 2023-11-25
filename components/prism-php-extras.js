@@ -1,8 +1,15 @@
+import { loader as phpLoader } from "./prism-php.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['php-extras']) {
+    if (options?.force !== true && Prism.languages['php-extras']) {
       return
     }
+
+	Prism.languages['php-extras'] = {}
+
+    phpLoader(Prism)
+
 	Prism.languages.insertBefore('php', 'variable', {
 		'this': {
 			pattern: /\$this\b/,

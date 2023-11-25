@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['n1ql']) {
+    if (options?.force !== true && Prism.languages['n1ql']) {
       return
     }
 	// https://docs.couchbase.com/server/current/n1ql/n1ql-language-reference/index.html

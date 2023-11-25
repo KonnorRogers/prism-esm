@@ -1,18 +1,9 @@
 import { assert } from '@esm-bundle/chai';
-import * as PrismLoader from './prism-loader';
 
 /**
- * @typedef {import("./prism-loader").PrismDOM} PrismDOM
- * @typedef {import("./prism-loader").PrismWindow} PrismWindow
- */
-
-
-/**
-	* @param {PrismWindow} window
+	* @param {Prism} Prism
 	*/
-export function createUtil(window) {
-	const { Prism, document } = window;
-
+export function createUtil(Prism) {
 	const util = {
 		assert: {
 			highlight({ language = 'none', code, expected }) {
@@ -31,27 +22,4 @@ export function createUtil(window) {
 	};
 
 	return util;
-}
-
-/**
-	* Creates a Prism DOM instance that will be automatically cleaned up after the given test suite finished.
-	*
-	* @param {ReturnType<typeof import('mocha')["suite"]>} suite
-	* @param {Partial<Record<"languages" | "plugins", string | string[]>>} options
-	*/
-export function createScopedPrismDom(suite, options = {}) {
-	const dom = PrismLoader.createPrismDOM();
-
-	suite.afterAll(function () {
-		dom.window.close();
-	});
-
-	if (options.languages) {
-		dom.loadLanguages(options.languages);
-	}
-	if (options.plugins) {
-		dom.loadPlugins(options.plugins);
-	}
-
-	return dom;
 }

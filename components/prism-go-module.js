@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['go-module']) {
+    if (options?.force !== true && Prism.languages['go-module']) {
       return
     }
 	// https://go.dev/ref/mod#go-mod-file-module

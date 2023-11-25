@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['linker-script']) {
+    if (options?.force !== true && Prism.languages['linker-script']) {
       return
     }
 	Prism.languages['linker-script'] = {

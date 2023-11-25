@@ -1,8 +1,17 @@
+import { loader as cssLoader } from "./prism-css.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['css-extras']) {
+
+    if (options?.force !== true && Prism.languages['css-extras']) {
       return
     }
+
+	// Stub css-extras so we dont infinitely load.
+    Prism.languages['css-extras'] = {}
+
+    cssLoader(Prism)
+
 	var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
 	var selectorInside;
 

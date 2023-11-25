@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['t4-templating']) {
+    if (options?.force !== true && Prism.languages['t4-templating']) {
       return
     }
 	function createBlock(prefix, inside, contentAlias) {

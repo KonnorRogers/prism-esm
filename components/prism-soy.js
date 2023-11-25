@@ -1,8 +1,13 @@
+import { loader as markupTemplatingLoader } from "./prism-markup-templating.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['soy']) {
+    if (options?.force !== true && Prism.languages['soy']) {
       return
     }
+
+    markupTemplatingLoader(Prism)
+
 	var stringPattern = /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
 	var numberPattern = /\b\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b|\b0x[\dA-F]+\b/;
 

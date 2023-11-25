@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['icu-message-format']) {
+    if (options?.force !== true && Prism.languages['icu-message-format']) {
       return
     }
 	// https://unicode-org.github.io/icu/userguide/format_parse/messages/

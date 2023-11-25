@@ -1,7 +1,7 @@
 import { loader as javascriptLoader } from "./prism-javascript.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['actionscript']) {
+    if (options?.force !== true && Prism.languages['actionscript']) {
       return
     }
 	if (!Prism.languages.javascript) {

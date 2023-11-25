@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['smali']) {
+    if (options?.force !== true && Prism.languages['smali']) {
       return
     }
 	// Test files for the parser itself:

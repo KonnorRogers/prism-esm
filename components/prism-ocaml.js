@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['ocaml']) {
+    if (options?.force !== true && Prism.languages['ocaml']) {
       return
     }
 	// https://ocaml.org/manual/lex.html

@@ -2,7 +2,7 @@ import { loader as markupLoader } from "./prism-markup.js"
 
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['parser']) {
+    if (options?.force !== true && Prism.languages['parser']) {
       return
     }
 	if (!Prism.languages.markup) {

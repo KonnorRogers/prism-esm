@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['clojure']) {
+    if (options?.force !== true && Prism.languages['clojure']) {
       return
     }
 	// Copied from https://github.com/jeluard/prism-clojure

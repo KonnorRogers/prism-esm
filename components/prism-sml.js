@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['sml']) {
+    if (options?.force !== true && Prism.languages['sml']) {
       return
     }
 	// https://smlfamily.github.io/sml97-defn.pdf

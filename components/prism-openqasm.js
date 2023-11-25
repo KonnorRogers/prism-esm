@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['openqasm']) {
+    if (options?.force !== true && Prism.languages['openqasm']) {
       return
     }
 	// https://qiskit.github.io/openqasm/grammar/index.html

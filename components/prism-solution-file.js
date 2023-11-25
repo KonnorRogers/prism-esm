@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['solution-file']) {
+    if (options?.force !== true && Prism.languages['solution-file']) {
       return
     }
 	var guid = {

@@ -1,8 +1,12 @@
+import { loader as yamlLoader } from "./prism-yaml.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['tap']) {
+    if (options?.force !== true && Prism.languages['tap']) {
       return
     }
+
+    yamlLoader(Prism)
 	// https://en.wikipedia.org/wiki/Test_Anything_Protocol
 
 	Prism.languages.tap = {

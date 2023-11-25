@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['clike']) {
+    if (options?.force !== true && Prism.languages['clike']) {
       return
     }
 	Prism.languages.clike = {

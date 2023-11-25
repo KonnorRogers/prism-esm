@@ -5,13 +5,17 @@ import { loader as clikeLoader } from "./components/prism-clike.js"
 import { loader as javascriptLoader } from "./components/prism-javascript.js"
 import { Plugin as FileHighlightPlugin } from "./plugins/file-highlight/prism-file-highlight.js"
 
-const Prism = OGPrism
+class Prism extends OGPrism {
+	constructor (...args) {
+		super(...args)
 
-// Load initial plugins / languages
-markupLoader(Prism)
-cssLoader(Prism)
-clikeLoader(Prism)
-javascriptLoader(Prism)
-FileHighlightPlugin(Prism)
+		// Load initial plugins / languages
+		markupLoader(this)
+		cssLoader(this)
+		clikeLoader(this)
+		javascriptLoader(this)
+		FileHighlightPlugin(this)
+	}
+}
 
 export { Prism }

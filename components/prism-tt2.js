@@ -1,12 +1,15 @@
 import { loader as clikeLoader } from "./prism-clike.js"
+import { loader as markupTemplatingLoader } from "./prism-markup-templating.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['tt2']) {
+    if (options?.force !== true && Prism.languages['tt2']) {
       return
     }
-	if (!Prism.languages.clike) {
-		clikeLoader(Prism)
-	}
+
+	clikeLoader(Prism)
+	markupTemplatingLoader(Prism)
+
 	Prism.languages.tt2 = Prism.languages.extend('clike', {
 		'comment': /#.*|\[%#[\s\S]*?%\]/,
 		'keyword': /\b(?:BLOCK|CALL|CASE|CATCH|CLEAR|DEBUG|DEFAULT|ELSE|ELSIF|END|FILTER|FINAL|FOREACH|GET|IF|IN|INCLUDE|INSERT|LAST|MACRO|META|NEXT|PERL|PROCESS|RAWPERL|RETURN|SET|STOP|SWITCH|TAGS|THROW|TRY|UNLESS|USE|WHILE|WRAPPER)\b/,

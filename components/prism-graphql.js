@@ -1,8 +1,13 @@
+// import { loader as markdownLoader } from "./prism-markdown.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['graphql']) {
+    if (options?.force !== true && Prism.languages['graphql']) {
       return
     }
+
+	// markdownLoader(Prism)
+
 	Prism.languages.graphql = {
 		'comment': /#.*/,
 		'description': {

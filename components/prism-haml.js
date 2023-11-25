@@ -1,8 +1,12 @@
+import { loader as rubyLoader } from "./prism-ruby.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['haml']) {
+    if (options?.force !== true && Prism.languages['haml']) {
       return
     }
+
+    rubyLoader(Prism)
 	/* TODO
 		Handle multiline code after tag
 	    	%foo= some |

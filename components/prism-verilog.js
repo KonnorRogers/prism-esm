@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['verilog']) {
+    if (options?.force !== true && Prism.languages['verilog']) {
       return
     }
 	Prism.languages.verilog = {

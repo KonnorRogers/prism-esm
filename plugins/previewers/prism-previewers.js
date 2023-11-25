@@ -1,7 +1,11 @@
+import { loader as cssExtrasLoader } from "../../components/prism-css-extras.js"
+
 export function Plugin (Prism) {
 	if (typeof Prism === 'undefined' || typeof document === 'undefined' || !Function.prototype.bind) {
 		return;
 	}
+
+	cssExtrasLoader(Prism)
 
 	var previewers = {
 		// gradient must be defined before color and angle

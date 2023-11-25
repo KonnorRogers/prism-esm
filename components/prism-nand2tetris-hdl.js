@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['nand2tetris-hdl']) {
+    if (options?.force !== true && Prism.languages['nand2tetris-hdl']) {
       return
     }
 	Prism.languages['nand2tetris-hdl'] = {

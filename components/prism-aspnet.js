@@ -1,12 +1,15 @@
 import { loader as markupLoader } from "./prism-markup.js"
+import { loader as csharpLoader } from "./prism-csharp.js"
+import { loader as javascriptLoader } from "./prism-javascript.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['aspnet']) {
+    if (options?.force !== true && Prism.languages['aspnet']) {
       return
     }
-	if (!Prism.languages.markup) {
-		markupLoader(Prism)
-	}
+
+	markupLoader(Prism)
+	javascriptLoader(Prism)
+	csharpLoader(Prism)
 
 	Prism.languages.aspnet = Prism.languages.extend('markup', {
 		'page-directive': {

@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['stylus']) {
+    if (options?.force !== true && Prism.languages['stylus']) {
       return
     }
 	var unit = {

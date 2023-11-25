@@ -1,7 +1,7 @@
 import { loader as cssLoader } from "./prism-css.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['scss']) {
+    if (options?.force !== true && Prism.languages['scss']) {
       return
     }
 	if (!Prism.languages.css) {

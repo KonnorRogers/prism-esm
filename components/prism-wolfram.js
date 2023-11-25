@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['wolfram']) {
+    if (options?.force !== true && Prism.languages['wolfram']) {
       return
     }
 	Prism.languages.wolfram = {

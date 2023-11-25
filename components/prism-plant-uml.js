@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['plant-uml']) {
+    if (options?.force !== true && Prism.languages['plant-uml']) {
       return
     }
 	var variable = /\$\w+|%[a-z]+%/;

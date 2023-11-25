@@ -2,7 +2,7 @@ import { loader as schemeLoader } from "./prism-scheme.js"
 
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['racket']) {
+    if (options?.force !== true && Prism.languages['racket']) {
       return
     }
 	if (!Prism.languages.scheme) {

@@ -3,7 +3,7 @@ import { loader as typescriptLoader } from "./prism-typescript.js"
 
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['tsx']) {
+    if (options?.force !== true && Prism.languages['tsx']) {
       return
     }
 	if (!Prism.languages.jsx) {

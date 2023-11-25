@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['mizar']) {
+    if (options?.force !== true && Prism.languages['mizar']) {
       return
     }
 	Prism.languages.mizar = {

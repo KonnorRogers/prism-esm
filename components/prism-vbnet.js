@@ -1,12 +1,11 @@
 import { loader as basicLoader } from "./prism-basic.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['vbnet']) {
+    if (options?.force !== true && Prism.languages['vbnet']) {
       return
     }
-	if (!Prism.languages.basic) {
-		basicLoader(Prism)
-	}
+
+	basicLoader(Prism)
 
 	Prism.languages.vbnet = Prism.languages.extend('basic', {
 		'comment': [

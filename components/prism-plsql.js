@@ -1,7 +1,7 @@
 import { loader as sqlLoader } from "./prism-sql.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['plsql']) {
+    if (options?.force !== true && Prism.languages['plsql']) {
       return
     }
 	if (!Prism.languages.sql) {

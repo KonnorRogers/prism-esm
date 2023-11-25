@@ -1,4 +1,4 @@
-function Plugin (Prism) {
+export function Plugin (Prism) {
 	if (typeof Prism === 'undefined' || typeof document === 'undefined' || !document.querySelector) {
 		return;
 	}

@@ -1,10 +1,17 @@
+import { loader as pythonLoader } from "./prism-python.js"
+import { loader as javaLoader } from "./prism-java.js"
+import { loader as mataLoader } from "./prism-mata.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['stata']) {
+    if (options?.force !== true && Prism.languages['stata']) {
       return
     }
 	// https://www.stata.com/manuals/u.pdf
 	// https://www.stata.com/manuals/p.pdf
+
+	pythonLoader(Prism)
+	javaLoader(Prism)
+	mataLoader(Prism)
 
 	Prism.languages.stata = {
 		'comment': [

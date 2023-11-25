@@ -1,8 +1,9 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['excel-formula']) {
+    if (options?.force !== true && Prism.languages['excel-formula']) {
       return
     }
+
 	Prism.languages['excel-formula'] = {
 		'comment': {
 			pattern: /(\bN\(\s*)"(?:[^"]|"")*"(?=\s*\))/i,

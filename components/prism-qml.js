@@ -1,8 +1,13 @@
+import { loader as javascriptLoader } from "./prism-javascript.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['qml']) {
+    if (options?.force !== true && Prism.languages['qml']) {
       return
     }
+
+	javascriptLoader(Prism)
+
 	var jsString = /"(?:\\.|[^\\"\r\n])*"|'(?:\\.|[^\\'\r\n])*'/.source;
 	var jsComment = /\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))*\*\//.source;
 

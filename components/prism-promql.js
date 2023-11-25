@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['promql']) {
+    if (options?.force !== true && Prism.languages['promql']) {
       return
     }
 	// Thanks to: https://github.com/prometheus-community/monaco-promql/blob/master/src/promql/promql.ts

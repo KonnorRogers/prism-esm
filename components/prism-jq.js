@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['jq']) {
+    if (options?.force !== true && Prism.languages['jq']) {
       return
     }
 	var interpolation = /\\\((?:[^()]|\([^()]*\))*\)/.source;

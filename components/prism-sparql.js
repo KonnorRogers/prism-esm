@@ -1,7 +1,7 @@
 import { loader as turtleLoader } from "./prism-turtle.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['sparql']) {
+    if (options?.force !== true && Prism.languages['sparql']) {
       return
     }
 	if (!Prism.languages.turtle) {

@@ -1,12 +1,13 @@
 import { loader as markupLoader } from "./prism-markup.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['textile']) {
+    if (options?.force !== true && Prism.languages['textile']) {
       return
     }
-	if (!Prism.languages.markup) {
-		markupLoader(Prism)
-	}
+
+	markupLoader(Prism)
+
 	// We don't allow for pipes inside parentheses
 	// to not break table pattern |(. foo |). bar |
 	var modifierRegex = /\([^|()\n]+\)|\[[^\]\n]+\]|\{[^}\n]+\}/.source;

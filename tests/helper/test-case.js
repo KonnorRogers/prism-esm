@@ -2,8 +2,8 @@ import * as fs from 'node:fs'
 import * as path from 'node:path'
 import { assert } from "@esm-bundle/chai"
 import * as Prettier from "prettier"
-import * as PrismLoader from './prism-loader'
-import * as TokenStreamTransformer from './token-stream-transformer'
+import * as PrismLoader from './prism-loader.js'
+import * as TokenStreamTransformer from './token-stream-transformer.js'
 
 /**
  * @typedef {import("./token-stream-transformer").TokenStream} TokenStream

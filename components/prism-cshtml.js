@@ -3,7 +3,7 @@ import { loader as csharpLoader } from "./prism-csharp.js"
 
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['cshtml']) {
+    if (options?.force !== true && Prism.languages['cshtml']) {
       return
     }
 	if (!Prism.languages.markup) {

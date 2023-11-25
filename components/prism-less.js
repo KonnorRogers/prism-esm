@@ -1,7 +1,8 @@
-import { cssLoader } from './prism-css.js'
+// import { cssLoader } from './prism-css.js'
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['less']) {
+    if (options?.force !== true && Prism.languages['less']) {
       return
     }
 	/* FIXME :
@@ -12,9 +13,7 @@ export function loader (Prism, options) {
  	A comment before a mixin usage prevents the latter to be properly highlighted.
  	*/
 
-	if (!Prism.languages.css) {
- 		cssLoader(Prism)
- 	}
+ 	// cssLoader(Prism)
 
 	Prism.languages.less = Prism.languages.extend('css', {
 		'comment': [

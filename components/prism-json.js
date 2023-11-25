@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['json']) {
+    if (options?.force !== true && Prism.languages['json']) {
       return
     }
 	// https://www.json.org/json-en.html

@@ -1,8 +1,13 @@
+import { loader as markupTemplatingLoader } from "./prism-markup-templating.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['smarty']) {
+    if (options?.force !== true && Prism.languages['smarty']) {
       return
     }
+
+    markupTemplatingLoader(Prism)
+
 	Prism.languages.smarty = {
 		'comment': {
 			pattern: /^\{\*[\s\S]*?\*\}/,

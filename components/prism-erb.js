@@ -1,8 +1,15 @@
+import { loader as rubyLoader } from "./prism-ruby.js"
+import { loader as markupTemplatingLoader } from "./prism-markup-templating.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['erb']) {
+    if (options?.force !== true && Prism.languages['erb']) {
       return
     }
+
+    rubyLoader(Prism)
+    markupTemplatingLoader(Prism)
+
 	Prism.languages.erb = {
 		'delimiter': {
 			pattern: /^(\s*)<%=?|%>(?=\s*$)/,

@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['editorconfig']) {
+    if (options?.force !== true && Prism.languages['editorconfig']) {
       return
     }
 	Prism.languages.editorconfig = {

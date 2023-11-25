@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['kumir']) {
+    if (options?.force !== true && Prism.languages['kumir']) {
       return
     }
 	/* eslint-disable regexp/no-dupe-characters-character-class */

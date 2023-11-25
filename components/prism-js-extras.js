@@ -1,8 +1,15 @@
+import { loader as javascriptLoader } from "./prism-javascript.js"
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['js-extras']) {
+    if (options?.force !== true && Prism.languages['js-extras']) {
       return
     }
+
+    Prism.languages['js-extras'] = {}
+
+	javascriptLoader(Prism)
+
 	Prism.languages.insertBefore('javascript', 'function-variable', {
 		'method-variable': {
 			pattern: RegExp('(\\.\\s*)' + Prism.languages.javascript['function-variable'].pattern.source),

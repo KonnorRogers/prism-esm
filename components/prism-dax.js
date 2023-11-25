@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['dax']) {
+    if (options?.force !== true && Prism.languages['dax']) {
       return
     }
 	Prism.languages.dax = {

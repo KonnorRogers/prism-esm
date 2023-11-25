@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['cypher']) {
+    if (options?.force !== true && Prism.languages['cypher']) {
       return
     }
 	Prism.languages.cypher = {

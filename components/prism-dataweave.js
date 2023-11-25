@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['dataweave']) {
+    if (options?.force !== true && Prism.languages['dataweave']) {
       return
     }
 	Prism.languages.dataweave = {

@@ -1,8 +1,15 @@
+import { loader as javascriptLoader } from './prism-javascript.js'
+
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['js-templates']) {
+    if (options?.force !== true && Prism.languages['js-templates']) {
       return
     }
+
+    Prism.languages['js-templates'] = {}
+
+    javascriptLoader(Prism)
+
 	var templateString = Prism.languages.javascript['template-string'];
 
 	// see the pattern in prism-javascript.js

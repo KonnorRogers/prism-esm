@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['cil']) {
+    if (options?.force !== true && Prism.languages['cil']) {
       return
     }
 	Prism.languages.cil = {

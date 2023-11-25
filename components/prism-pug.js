@@ -1,8 +1,14 @@
+import { loader as markupLoader } from "./prism-markup.js"
+import { loader as javascriptLoader } from "./prism-javascript.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['pug']) {
+    if (options?.force !== true && Prism.languages['pug']) {
       return
     }
+
+    markupLoader(Prism)
+    javascriptLoader(Prism)
+
 	// TODO:
 	// - Add CSS highlighting inside <style> tags
 	// - Add support for multi-line code blocks

@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['javadoclike']) {
+    if (options?.force !== true && Prism.languages['javadoclike']) {
       return
     }
 	var javaDocLike = Prism.languages.javadoclike = {

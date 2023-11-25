@@ -1,10 +1,10 @@
 import { loader as cppLoader } from "./prism-cpp.js"
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['arduino']) {
+    if (options?.force !== true && Prism.languages['arduino']) {
       return
     }
-	if (!Prism.languages.javascript) {
+	if (!Prism.languages.cpp) {
 		cppLoader(Prism)
 	}
 	Prism.languages.arduino = Prism.languages.extend('cpp', {

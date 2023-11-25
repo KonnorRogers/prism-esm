@@ -1,12 +1,12 @@
+import { Plugin as ToolbarPlugin } from "../toolbar/prism-toolbar.js"
+
 export function Plugin (Prism) {
 	if (typeof Prism === 'undefined' || typeof document === 'undefined') {
 		return;
 	}
 
 	if (!Prism.plugins.toolbar) {
-		console.warn('Copy to Clipboard plugin loaded before Toolbar plugin.');
-
-		return;
+		ToolbarPlugin(Prism)
 	}
 
 	/**

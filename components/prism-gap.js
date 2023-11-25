@@ -1,6 +1,6 @@
 export function loader (Prism, options) {
     if (typeof Prism === 'undefined') return
-    if (options?.force !== true || Prism.languages['gap']) {
+    if (options?.force !== true && Prism.languages['gap']) {
       return
     }
 	// https://www.gap-system.org/Manuals/doc/ref/chap4.html
