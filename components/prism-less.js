@@ -13,6 +13,7 @@ export function loader (Prism, options) {
  	A comment before a mixin usage prevents the latter to be properly highlighted.
  	*/
 
+	// For some reason, we cant use the "less" loader in Less unless we want things to fail.
  	// cssLoader(Prism)
 
 	Prism.languages.less = Prism.languages.extend('css', {

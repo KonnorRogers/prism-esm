@@ -3,7 +3,8 @@
 ## 2.0.0 (11-22-2023)
 
 - BREAKING_CHANGE: Convert from UMD to ESM.
-- BREAKING_CHANGE: Prism is now an ES6 class instead of a UMD global.
+- BREAKING_CHANGE: The autoloader does not currently work. Will require updates to be ESM compatible.
+- BREAKING_CHANGE: Prism is now an instantiable ES6 class instead of a UMD global.
 - BREAKING_CHANGE: Components no longer automatically bind to globally scoped Prism instance. Instead, now you import the `loader` and pass in the Prism instance which will add a language to the Prism instance. Like so:
 
 ```js
@@ -46,6 +47,7 @@ FileHighlightPlugin(prism)
 ```
 
 - BREAKING_CHANGE: Token.stringify now requires a `prism` instance as its final parameter.
+- BREAKING_CHANGE: for users of older Node / Browser versions, the internal clone function has been replaced with `structuredClone()` a polyfill may be necessary for your environment.
 
 ## 1.29.0 (2022-08-23)
 

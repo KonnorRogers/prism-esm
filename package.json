@@ -8,6 +8,13 @@
 	"engines": {
 		"node": ">=6"
 	},
+	"files": [
+		"components/**/*.js",
+		"plugins/**/*",
+		"themes/*.css",
+		"prism.js",
+		"prism-core.js"
+	],
 	"scripts": {
 		"benchmark": "node benchmark/benchmark.js",
 		"build": "gulp",
@@ -84,7 +91,8 @@
 			"components/**/*.js",
 			"plugins/**/*",
 			"themes/*.css",
-			"prism.js"
+			"prism.js",
+			"prism-core.js"
 		]
 	}
 }

@@ -6,6 +6,7 @@ export function loader (Prism, options) {
       return
     }
 
+	// TODO: this should work, but fails when used with  the test loader.
 	// markdownLoader(Prism)
 
 	Prism.languages.graphql = {
